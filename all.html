@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  
+    .loan{
+      background-color: blue;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 300px;
+      border-radius: 30px;
+      color: white;
+    }
+
+    .calcio{
+      background-color: yellow;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 300px;
+      border-radius: 30px;
+    }
+
+    .investS{
+      background-color: red;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 300px;
+      border-radius: 30px;
+    }
+    .retireS{
+      background-color: green;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 300px;
+      border-radius: 30px;
+    }
+    .contain{
+      display: flex;
+      justify-content: space-around;
+      column-gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="contain">
+  <!--loan-->
+  <div class="loan">
+  <h1>Loan calculator</h1>
+  <input type="text" class="amount" placeholder="how much"><br>
+    <select id="Years">
+    <option value="1">1 year</option>
+    <option value="2">2 years</option>
+    <option value="3">3 years</option>
+    <option value="3">4 years</option>
+    <option value="5">5 years</option>
+    <option value="6">6 years</option>
+    <option value="7">7 years</option>
+    <option value="8">8 years</option>
+  </select>
+  <br><br>
+  <p>Loan Interest: 15%</p>
+  <button onclick="LOAN()">Calculate</button>
+  <p class="answer"></p>
+</div>
+  <br>
+  <!--calculator-->
+  <div class="calcio">
+  <h1>Simple Calculator</h1>
+    <p>Input number</p>
+    <input type="text" class="value1">
+    <br>
+    <span id="mysymbol" class="symbol"></span>
+    <br>
+    <input type="text" class="value2">
+    <br>
+    <p class="solution"></p>
+    <br>
+    <button class="btn" onclick="addOperation()">+</button>
+    <button class="btn" onclick="minusOperation()">-</button>
+    <button class="btn" onclick="multiplyOperation()">*</button>
+    <button class="btn" onclick="divisionOperation()">/</button>
+    </div>
+    <!--Investment-->
+    <div class="investS">
+    <br>
+    <h3>How much do you wish to invest</h3>
+    <input type="text" class="invested">
+  <br>
+  <select name="" id="years">
+    <option value="1">1 year</option>
+    <option value="2">2 year</option>
+    <option value="3">3 year</option>
+    <option value="4">4 year</option>
+    <option value="5">5 year</option>
+    <option value="6">6 year</option>
+  </select>
+  <br><br>
+  <h4>ROI is 15%</h4>
+  <button onclick="investment()">Calculate ROI</button>
+  <br>
+  <p class="paragraph"></p>
+</div>
+<!--RETIREMENT-->
+<div class="retireS">
+<h3>Retirement calculator</h3>
+    <h3>What year where you born</h3>
+    <input type="text" class="Born-year">
+    <br>
+    <div class="when"></div>
+    <br>
+    <button onclick="rtYear()">Calculate</button>
+  </div>
+</div>
+  <script>
+    //loan
+    function LOAN() {
+      //Amount
+      const Amount=document.querySelector('.amount');
+    const vAmount=Number(Amount.value);
+
+      //duration
+    const loanAmt=document.getElementById('Years');
+    const selectedYear=Number(loanAmt.value);
+
+    //interest
+    const interest=0.15*vAmount;
+    const tInterest=interest*selectedYear;
+
+    const mthAmount=selectedYear*12;
+    const amtPayedBack=tInterest+vAmount;
+    const mthRepayment=amtPayedBack/mthAmount;
+
+     //display answer
+     const theAnswer=document.querySelector('.answer');
+    theAnswer.innerHTML=`You will pay us ₦${Math.ceil(mthRepayment)} monthly if you borrow ₦${vAmount} from us for ${selectedYear} year`
+
+
+    // alert(`Total interest after ${selectedYear} year(s) if ₦${vAmount} is borrowed is ₦${tInterest} \n Therefore you will pay us ₦${tInterest+vAmount} after ${selectedYear} years or pay us ₦${mthRepayment} monthly`)
+    }
+
+    //CALCULATOR
+
+    function addOperation() {
+      let v1= document.querySelector('.value1');
+  let v2= document.querySelector('.value2');
+  let calcSymbol=document.getElementById('mysymbol')
+  calcSymbol.innerHTML='+';
+
+  const inputValue1=Number(v1.value);
+  const inputValue2=Number(v2.value);
+  const adittion = inputValue1 + inputValue2;
+  calcSymbol.innerHTML='+';
+
+  document.querySelector('.solution').innerHTML=`Answer is ${adittion} `
+    }
+
+    function minusOperation() {
+      let v1= document.querySelector('.value1');
+  let v2= document.querySelector('.value2');
+  let calcSymbol=document.getElementById('mysymbol')
+  calcSymbol.innerHTML='-';
+
+  const inputValue1=Number(v1.value);
+  const inputValue2=Number(v2.value);
+  const adittion = inputValue1 - inputValue2;
+
+  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
+    }
+
+    function multiplyOperation() {
+      let v1= document.querySelector('.value1');
+  let v2= document.querySelector('.value2');
+  let calcSymbol=document.getElementById('mysymbol')
+  calcSymbol.innerHTML='*';
+
+  const inputValue1=Number(v1.value);
+  const inputValue2=Number(v2.value);
+  const adittion = inputValue1 * inputValue2;
+
+  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
+    }
+
+    function divisionOperation() {
+      let v1= document.querySelector('.value1');
+  let v2= document.querySelector('.value2');
+  let calcSymbol=document.getElementById('mysymbol')
+  calcSymbol.innerHTML='/';
+
+  const inputValue1=Number(v1.value);
+  const inputValue2=Number(v2.value);
+  const adittion = inputValue1 / inputValue2;
+
+  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
+    }
+
+    //investment
+    function investment() {
+      
+    
+      let investedAmt=document.querySelector('.invested');
+      let InvestedAmt=Number(investedAmt.value);
+  
+  
+      let duration=document.getElementById("years");
+      let Duration=Number(duration.value)
+  
+      let roiPerMonth=0.15 *InvestedAmt;
+      let durationPerMonth=Duration*12;
+      let totalRoi=durationPerMonth*roiPerMonth;
+      let redrawableAmt=totalRoi+InvestedAmt
+  
+      const all= document.querySelector('.paragraph');   all.innerHTML=`you will withdraw ${redrawableAmt} if you invest ${InvestedAmt} with us for ${Duration} year`;
+  
+    }
+
+    //RETIREMENT
+    function rtYear() {
+        const retirementAge= 65;
+        let currentYear= new Date().getFullYear();
+        let askYear = document.querySelector('.Born-year');
+        let NaskYear=askYear.value;
+        let birthYear = currentYear - NaskYear;
+        let retireIn = retirementAge - birthYear;
+        
+        if (retireIn == 0) {
+            let when=document.querySelector('.when');
+            when.innerHTML=`you will retire this year`;
+        } 
+         else if (retireIn == -1) {
+            let OughtToRetire= -1*retireIn
+            let when=document.querySelector('.when');
+            when.innerHTML=`you ought to have retired ${OughtToRetire} year ago`;
+            //alert(`you ought to have retired ${OughtToRetire} year ago`)
+        }
+         else if (retireIn < 1) {
+            let OughtToRetire= -1*retireIn
+            let when=document.querySelector('.when');
+            when.innerHTML=`you ought to have retired ${OughtToRetire} years ago`;
+           // alert(`you ought to have retired ${OughtToRetire} years ago`)
+        }
+         else if (retireIn < 65) {
+            let when=document.querySelector('.when');
+            when.innerHTML=`you will retire in ${retireIn} year(s) Time`;
+            //alert(`you will retire in ${retireIn} year(s) Time`);
+        } 
+    }
+
+  </script>
+</body>
+</html>

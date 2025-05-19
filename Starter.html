@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>Retirement calculator</h1>
+    <p>What year where you born</p>
+    <input type="text" class="Born-year">
+    <div class="when"></div>
+    <button onclick="rtYear()">Calculate</button>
+</head>
+<body>
+    <script>
+
+        function rtYear() {
+        const retirementAge= 65;
+        let currentYear= new Date().getFullYear();
+        let askYear = document.querySelector('.Born-year');
+        let NaskYear=askYear.value;
+        let birthYear = currentYear - NaskYear;
+        let retireIn = retirementAge - birthYear;
+        
+        if (retireIn == 0) {
+            let when=document.querySelector('.when');
+            when.innerHTML=`you will retire this year`;
+        } 
+         else if (retireIn == -1) {
+            let OughtToRetire= -1*retireIn
+            let when=document.querySelector('.when');
+            when.innerHTML=`you ought to have retired ${OughtToRetire} year ago`;
+            //alert(`you ought to have retired ${OughtToRetire} year ago`)
+        }
+         else if (retireIn < 1) {
+            let OughtToRetire= -1*retireIn
+            let when=document.querySelector('.when');
+            when.innerHTML=`you ought to have retired ${OughtToRetire} years ago`;
+           // alert(`you ought to have retired ${OughtToRetire} years ago`)
+        }
+         else if (retireIn < 65) {
+            let when=document.querySelector('.when');
+            when.innerHTML=`you will retire in ${retireIn} year(s) Time`;
+            //alert(`you will retire in ${retireIn} year(s) Time`);
+        } 
+    }
+
+        // let question1 = +prompt('what is 8x8?');
+        // switch(question1){
+        //     case 61:
+        //     console.log('Wrong, but you are getting closer');
+        //         break;
+        //     case 64:
+        //         console.log('Correct 8x8 is 64');
+        //         break;
+        //     case 66:
+        //    console.log('came down a little');
+        //     break;
+        //     default:
+        //         console.log('wrong answer');
+        // }
+
+        // function ebube(username) {
+        //     alert(`Welcome ${username}`)
+        // }
+
+        // ebube('dipupo')
+     
+        // let year = new Date().getFullYear();
+        // let userAge= +prompt(`what year where you born`);
+
+        // let Age = (Cyear, CuserAge) => {
+        //     return Cyear-CuserAge;
+        // }
+
+        // let somn=Age(year, userAge)
+        //      console.log(`you are ${somn} years old`);
+             
+        // function Age(Cyear, CuserAge) {
+        //      return Cyear-CuserAge;
+        //  }
+        //      let somn=Age(year, userAge)
+        //      console.log(`you are ${somn} years old`);
+              
+              
+
+        
+        //let yourAge=year-userAge;
+        //alert(yourAge)
+
+        //alert(sum(8,19));
+        
+        // let time = new Date().getHours();
+        // if (time >= 1 && time <=11) {
+        //     alert(`good morning`);
+        // } else if (time >=12 && time <= 17) {
+        //     alert(`good afternoon`);
+        // } else {
+        //     alert(`good evening`);
+        // }
+        let studentScore={
+            student : [
+                {
+                    name : 'olamide oladipo',
+                    English : 45,
+                    Maths : 54,
+                    civic : 45,
+                    Grade : "pass"
+                },
+                {
+                    name : 'ebube victor',
+                    English : 50,
+                    Maths : 89,
+                    civic : 40,
+                    Grade : "pass" 
+                }
+            ]
+        }
+
+        // alert(`i have two students in my class: ${studentScore.student[0].name} and ${studentScore.student[1].name}
+        // ${studentScore.student[0].name} scores: English- ${studentScore.student[0].English}, maths-${studentScore.student[0].Maths}
+        // civic -${studentScore.student[0].civic} while 
+        // \n${studentScore.student[1].name} scores: 
+        // English- ${studentScore.student[1].English}, maths-${studentScore.student[1].Maths}
+        // civic -${studentScore.student[1].civic}`
+        // )
+        // let today = new Date().getDay();
+        // let allDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        //  console.log(`Today is ${allDays[today]}`);
+
+        // let ayoAge=prompt('what is your brothers age? ');
+        // let olaAge=prompt('which year was your brother born? ');
+        // let x =20;
+        // let y ='20';
+        // alert(x !== +y)
+        // // let totalAge= +ayoAge + +olaAge;
+        // let greet = 'Have';
+        // let day = ' a nice day';
+        // alert(greet + day)
+        // alert(totalAge);
+        //  let a = 12;
+        //  let b = "4";
+        //  alert(a + b);
+        //System.out.println("hello world");
+        // let gender = prompt('male or femlae');
+        // let age = prompt('your age please: ');
+        // if (gender == 'female') {
+        //     alert(`hello girl`)
+        // } else if (gender == '') {
+        //     alert(`enter a gender`)
+        // }
+        // else{
+        //     alert(`you are not a female`)
+        // };
+        
+    </script>
+</body>
+</html>

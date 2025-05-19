@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text"  placeholder="first input" class="number1">
+  <span id="mysymbol"></span>
+  <input type="text" placeholder="second input" class="number2">
+  <span id="myanswer"></span>
+  <br><br>
+  <button onclick="multiply()">*</button>
+  <button onclick="addition()">+</button>
+  <button onclick="subtraction()">-</button>
+  <button onclick="division()">/</button>
+
+  <script>
+    function multiply() {
+      
+    
+    let firstInput= document.querySelector('.number1').value;
+    let secondInput = document.querySelector('.number2').value;
+
+    let calcSymbol=document.getElementById('mysymbol')
+    let theAnswer=document.getElementById('myanswer');
+
+    calcSymbol.innerHTML='*';
+    theAnswer.innerHTML=`=${firstInput*secondInput}`;
+    // firstInput*secondInput
+  }
+  function addition() {
+      
+    
+      let firstInput= document.querySelector('.number1').value;
+      let secondInput = document.querySelector('.number2').value;
+  
+      let calcSymbol=document.getElementById('mysymbol')
+      let theAnswer=document.getElementById('myanswer');
+  
+      calcSymbol.innerHTML='+';
+      theAnswer.innerHTML=`=${firstInput+secondInput}`;
+      // firstInput*secondInput
+    }
+    function subtraction() {
+      
+    
+      let firstInput= document.querySelector('.number1').value;
+      let secondInput = document.querySelector('.number2').value;
+  
+      let calcSymbol=document.getElementById('mysymbol')
+      let theAnswer=document.getElementById('myanswer');
+  
+      calcSymbol.innerHTML='-';
+      theAnswer.innerHTML=`=${firstInput-secondInput}`;
+      // firstInput*secondInput
+    }
+    function division() {
+      
+    
+      let firstInput= document.querySelector('.number1').value;
+      let secondInput = document.querySelector('.number2').value;
+  
+      let calcSymbol=document.getElementById('mysymbol')
+      let theAnswer=document.getElementById('myanswer');
+  
+      calcSymbol.innerHTML='/';
+      theAnswer.innerHTML=`=${firstInput/secondInput}`;
+      // firstInput*secondInput
+    }
+  </script>
+</body>
+</html>
