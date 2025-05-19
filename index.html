@@ -1,19 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <h1>Retirement calculator</h1>
-    <p>What year where you born</p>
-    <input type="text" class="Born-year">
-    <div class="when"></div>
-    <button onclick="rtYear()">Calculate</button>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  
+    .loan{
+      background-color: blue;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 300px;
+      border-radius: 30px;
+      color: white;
+    }
+
+    .calcio{
+      background-color: yellow;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 300px;
+      border-radius: 30px;
+    }
+
+    .investS{
+      background-color: red;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 300px;
+      border-radius: 30px;
+    }
+    .retireS{
+      background-color: green;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 300px;
+      border-radius: 30px;
+    }
+    .contain{
+      display: flex;
+      justify-content: space-around;
+      column-gap: 10px;
+    }
+  </style>
 </head>
 <body>
-    <script>
+  <div class="contain">
+  <!--loan-->
+  <div class="loan">
+  <h1>Loan calculator</h1>
+  <input type="text" class="amount" placeholder="how much"><br>
+    <select id="Years">
+    <option value="1">1 year</option>
+    <option value="2">2 years</option>
+    <option value="3">3 years</option>
+    <option value="3">4 years</option>
+    <option value="5">5 years</option>
+    <option value="6">6 years</option>
+    <option value="7">7 years</option>
+    <option value="8">8 years</option>
+  </select>
+  <br><br>
+  <p>Loan Interest: 15%</p>
+  <button onclick="LOAN()">Calculate</button>
+  <p class="answer"></p>
+</div>
+  <br>
+  <!--calculator-->
+  <div class="calcio">
+  <h1>Simple Calculator</h1>
+    <p>Input number</p>
+    <input type="text" class="value1">
+    <br>
+    <span id="mysymbol" class="symbol"></span>
+    <br>
+    <input type="text" class="value2">
+    <br>
+    <p class="solution"></p>
+    <br>
+    <button class="btn" onclick="addOperation()">+</button>
+    <button class="btn" onclick="minusOperation()">-</button>
+    <button class="btn" onclick="multiplyOperation()">*</button>
+    <button class="btn" onclick="divisionOperation()">/</button>
+    </div>
+    <!--Investment-->
+    <div class="investS">
+    <br>
+    <h3>How much do you wish to invest</h3>
+    <input type="text" class="invested">
+  <br>
+  <select name="" id="years">
+    <option value="1">1 year</option>
+    <option value="2">2 year</option>
+    <option value="3">3 year</option>
+    <option value="4">4 year</option>
+    <option value="5">5 year</option>
+    <option value="6">6 year</option>
+  </select>
+  <br><br>
+  <h4>ROI is 15%</h4>
+  <button onclick="investment()">Calculate ROI</button>
+  <br>
+  <p class="paragraph"></p>
+</div>
+<!--RETIREMENT-->
+<div class="retireS">
+<h3>Retirement calculator</h3>
+    <h3>What year where you born</h3>
+    <input type="text" class="Born-year">
+    <br>
+    <div class="when"></div>
+    <br>
+    <button onclick="rtYear()">Calculate</button>
+  </div>
+</div>
+  <script>
+    //loan
+    function LOAN() {
+      //Amount
+      const Amount=document.querySelector('.amount');
+    const vAmount=Number(Amount.value);
 
-        function rtYear() {
+      //duration
+    const loanAmt=document.getElementById('Years');
+    const selectedYear=Number(loanAmt.value);
+
+    //interest
+    const interest=0.15*vAmount;
+    const tInterest=interest*selectedYear;
+
+    const mthAmount=selectedYear*12;
+    const amtPayedBack=tInterest+vAmount;
+    const mthRepayment=amtPayedBack/mthAmount;
+
+     //display answer
+     const theAnswer=document.querySelector('.answer');
+    theAnswer.innerHTML=`You will pay us ₦${Math.ceil(mthRepayment)} monthly if you borrow ₦${vAmount} from us for ${selectedYear} year`
+
+
+    // alert(`Total interest after ${selectedYear} year(s) if ₦${vAmount} is borrowed is ₦${tInterest} \n Therefore you will pay us ₦${tInterest+vAmount} after ${selectedYear} years or pay us ₦${mthRepayment} monthly`)
+    }
+
+    //CALCULATOR
+
+    function addOperation() {
+      let v1= document.querySelector('.value1');
+  let v2= document.querySelector('.value2');
+  let calcSymbol=document.getElementById('mysymbol')
+  calcSymbol.innerHTML='+';
+
+  const inputValue1=Number(v1.value);
+  const inputValue2=Number(v2.value);
+  const adittion = inputValue1 + inputValue2;
+  calcSymbol.innerHTML='+';
+
+  document.querySelector('.solution').innerHTML=`Answer is ${adittion} `
+    }
+
+    function minusOperation() {
+      let v1= document.querySelector('.value1');
+  let v2= document.querySelector('.value2');
+  let calcSymbol=document.getElementById('mysymbol')
+  calcSymbol.innerHTML='-';
+
+  const inputValue1=Number(v1.value);
+  const inputValue2=Number(v2.value);
+  const adittion = inputValue1 - inputValue2;
+
+  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
+    }
+
+    function multiplyOperation() {
+      let v1= document.querySelector('.value1');
+  let v2= document.querySelector('.value2');
+  let calcSymbol=document.getElementById('mysymbol')
+  calcSymbol.innerHTML='*';
+
+  const inputValue1=Number(v1.value);
+  const inputValue2=Number(v2.value);
+  const adittion = inputValue1 * inputValue2;
+
+  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
+    }
+
+    function divisionOperation() {
+      let v1= document.querySelector('.value1');
+  let v2= document.querySelector('.value2');
+  let calcSymbol=document.getElementById('mysymbol')
+  calcSymbol.innerHTML='/';
+
+  const inputValue1=Number(v1.value);
+  const inputValue2=Number(v2.value);
+  const adittion = inputValue1 / inputValue2;
+
+  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
+    }
+
+    //investment
+    function investment() {
+      
+    
+      let investedAmt=document.querySelector('.invested');
+      let InvestedAmt=Number(investedAmt.value);
+  
+  
+      let duration=document.getElementById("years");
+      let Duration=Number(duration.value)
+  
+      let roiPerMonth=0.15 *InvestedAmt;
+      let durationPerMonth=Duration*12;
+      let totalRoi=durationPerMonth*roiPerMonth;
+      let redrawableAmt=totalRoi+InvestedAmt
+  
+      const all= document.querySelector('.paragraph');   all.innerHTML=`you will withdraw ${redrawableAmt} if you invest ${InvestedAmt} with us for ${Duration} year`;
+  
+    }
+
+    //RETIREMENT
+    function rtYear() {
         const retirementAge= 65;
         let currentYear= new Date().getFullYear();
         let askYear = document.querySelector('.Born-year');
@@ -44,114 +256,6 @@
         } 
     }
 
-        // let question1 = +prompt('what is 8x8?');
-        // switch(question1){
-        //     case 61:
-        //     console.log('Wrong, but you are getting closer');
-        //         break;
-        //     case 64:
-        //         console.log('Correct 8x8 is 64');
-        //         break;
-        //     case 66:
-        //    console.log('came down a little');
-        //     break;
-        //     default:
-        //         console.log('wrong answer');
-        // }
-
-        // function ebube(username) {
-        //     alert(`Welcome ${username}`)
-        // }
-
-        // ebube('dipupo')
-     
-        // let year = new Date().getFullYear();
-        // let userAge= +prompt(`what year where you born`);
-
-        // let Age = (Cyear, CuserAge) => {
-        //     return Cyear-CuserAge;
-        // }
-
-        // let somn=Age(year, userAge)
-        //      console.log(`you are ${somn} years old`);
-             
-        // function Age(Cyear, CuserAge) {
-        //      return Cyear-CuserAge;
-        //  }
-        //      let somn=Age(year, userAge)
-        //      console.log(`you are ${somn} years old`);
-              
-              
-
-        
-        //let yourAge=year-userAge;
-        //alert(yourAge)
-
-        //alert(sum(8,19));
-        
-        // let time = new Date().getHours();
-        // if (time >= 1 && time <=11) {
-        //     alert(`good morning`);
-        // } else if (time >=12 && time <= 17) {
-        //     alert(`good afternoon`);
-        // } else {
-        //     alert(`good evening`);
-        // }
-        let studentScore={
-            student : [
-                {
-                    name : 'olamide oladipo',
-                    English : 45,
-                    Maths : 54,
-                    civic : 45,
-                    Grade : "pass"
-                },
-                {
-                    name : 'ebube victor',
-                    English : 50,
-                    Maths : 89,
-                    civic : 40,
-                    Grade : "pass" 
-                }
-            ]
-        }
-
-        // alert(`i have two students in my class: ${studentScore.student[0].name} and ${studentScore.student[1].name}
-        // ${studentScore.student[0].name} scores: English- ${studentScore.student[0].English}, maths-${studentScore.student[0].Maths}
-        // civic -${studentScore.student[0].civic} while 
-        // \n${studentScore.student[1].name} scores: 
-        // English- ${studentScore.student[1].English}, maths-${studentScore.student[1].Maths}
-        // civic -${studentScore.student[1].civic}`
-        // )
-        // let today = new Date().getDay();
-        // let allDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-        //  console.log(`Today is ${allDays[today]}`);
-
-        // let ayoAge=prompt('what is your brothers age? ');
-        // let olaAge=prompt('which year was your brother born? ');
-        // let x =20;
-        // let y ='20';
-        // alert(x !== +y)
-        // // let totalAge= +ayoAge + +olaAge;
-        // let greet = 'Have';
-        // let day = ' a nice day';
-        // alert(greet + day)
-        // alert(totalAge);
-        //  let a = 12;
-        //  let b = "4";
-        //  alert(a + b);
-        //System.out.println("hello world");
-        // let gender = prompt('male or femlae');
-        // let age = prompt('your age please: ');
-        // if (gender == 'female') {
-        //     alert(`hello girl`)
-        // } else if (gender == '') {
-        //     alert(`enter a gender`)
-        // }
-        // else{
-        //     alert(`you are not a female`)
-        // };
-        
-    </script>
+  </script>
 </body>
 </html>
