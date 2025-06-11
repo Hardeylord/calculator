@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uber</title>
+  <link rel="stylesheet" href="myproj.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="container">
+    <div class="device js-container">
+      <div class="header">
+        <button class="profile"><i class="fa-brands fa-pied-piper"></i></button>
+        <button class="profile"><i class="fa-solid fa-circle-user"></i></button>
+      </div>
+    <div class="Title">
+    <h1>Where Are You Headed To?</h1>
+    </div>
+      <div class="forms">
+    <div class="form">
+      <span>From:</span><div><input class="inputFrom from" type="text"></div>
+    </div>
+    <div class="form">
+      <span>To:</span><div><input class="inputFrom2 to" type="text"></div>
+    </div>
+  </div>
+  <div class="btnBr">
+    <button class="js-btnBr css-btnBr">BOOK RIDE<i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+  </div>
+  
+
+  <!-- 2nd phone -->
+    <div class="device2 js-container2"> 
+    <div class="words2">
+    <p class="toandfro"></p>
+    </div>
+    <div class="optionBtn">
+      <button class="cancel">CANCEL</button>
+      <button class="continue">CONTINUE</button>
+  </div>
+  </div>
+
+  <!-- 3rd phone -->
+    <div class="device3 js-container3">
+    <div class="words3">
+    <p class="timeStart" style="text-align: center; color: white;"></p>
+    <P class="rideProgress" style="text-align: center; color: white;">00:00:00</P>
+    </div>
+    <div class="optionBtn">
+    <button class="pause">PAUSE</button>
+    <button class="stop">STOP RIDE</button>
+  </div>
+  </div>
+
+
+  <!-- 4th phone -->
+  <div class="device4 js-container4">
+    <div class="ride-ended">
+      <p class="thank-you">Ride Has Ended <br><i class="fa-solid fa-square-check"></i></p>
+    </div>
+     <div class="total">
+    <p>Base Fare ₦2000</p>
+    <p class="js-timeFare">Time Fare ₦2000</p>
+    <p class="js-initialTotal">Initial Total ₦2000</p>
+    <p class="js-Tax">Tax(10%) ₦21</p>
+    <p class="js-Total">Total Amount ₦21</p>
+      </div>
+    <div class="optionBtn">
+    <button class="payment">Make Payment</button>
+    <button class="home" style="display: none;">Home</button>
+  </div>
+  </div>
+
+  </div>
+
+  <script>
+    //select the book ride button and two input from form
+    const from=document.querySelector('.from');
+    const fromConfirm=/^[a-zA-Z]+$/;
+    const to=document.querySelector('.to');
+    const bookBtn=document.querySelector(".js-btnBr");
+
+    //cancel and start button
+    const cancelBtn=document.querySelector(".cancel");
+    const continueBtn=document.querySelector(".continue");
+
+    //screen 1-2-3
+    const container=document.querySelector('.js-container');
+    const container2=document.querySelector('.js-container2');
+    const container3=document.querySelector('.js-container3');
+    const container4=document.querySelector('.js-container4');
+
+    //to fro message for screen 2
+      const message=document.querySelector('.toandfro');
+
+    //count down screen 3
+    const timeStart=document.querySelector(".timeStart");
+    const rideProgress=document.querySelector(".rideProgress");
+    //pause start ride
+    let pauseBtn=document.querySelector(".pause");
+    const stopRideBtn=document.querySelector(".stop");
+    //payemnt button
+    const paymenteBtn=document.querySelector(".payment");
+    const HomeBtn=document.querySelector(".home");
+
+      //book ride btn
+    bookBtn.addEventListener("click", function () {
+      const fromTxt=from.value;
+      const toTxt=to.value;
+      //validate Form
+      if (!fromTxt) {
+        alert('please enter your current location')
+        return;
+      } else if (!fromConfirm.test(fromTxt)) {
+        alert('please location can only be in alphabet')
+        return;
+      }
+
+      if (!toTxt) {
+        alert('please enter the  location you are heading to')
+        return;
+      } else if (!fromConfirm.test(toTxt)) {
+        alert('please location can only be in alphabet')
+        return;
+      }
+      
+      container.style.display="none"
+      container2.style.display="flex"
+      message.innerHTML = `Please confirm that you are moving from <strong style="color: #4CAF50;">${fromTxt}</strong> to <span style="color: #ff5722;">${toTxt}</span>`;
+
+      // message.innerText=`Please confirm that you are moving from ${fromTxt} to ${toTxt}`
+    })
+
+    //cancel button
+    cancelBtn.addEventListener("click", function (params) {
+      container.style.display="flex"
+      container2.style.display="none"
+      from.value=""
+      to.value=""
+    })
+
+    //increment 
+    let seconds=0
+    let minuts=0
+    let hours=0
+    let pauseInterval;
+
+    let displaySeconds=0
+    let displayMinuts=0
+    let displayHours=0
+
+    function startrter() {
+      seconds++
+      if (seconds/60 === 1) {
+        seconds=0
+        minuts++
+        if (minuts/60 ===1) {
+          minuts=0
+          hours++
+        }
+      }
+      if (seconds<10) {
+        displaySeconds='0'+seconds.toString()
+      } else{
+        displaySeconds=seconds
+      }
+      if (minuts<10) {
+        displayMinuts='0'+minuts.toString()
+      } else{
+        displayMinuts=minuts
+      }
+      if (hours<10) {
+        displayHours='0'+hours.toString()
+      } else{
+        displayHours=hours
+      }
+      rideProgress.textContent=displayHours+":"+displayMinuts+":"+displaySeconds
+      // rideProgress.textContent=`00:0${seconds}`
+      // if (seconds>9) {
+      //   rideProgress.textContent=`00:${seconds}`
+      // }
+      
+    }
+    //start button
+    continueBtn.addEventListener("click", function () {
+      container3.style.display="flex"
+      container2.style.display="none"
+      timeStart.innerHTML=`Ride in progress you are now moving from <strong style="color: #4CAF50;">${from.value}</strong> to <span style="color: #ff5722;">${to.value}</span>`;
+      pauseInterval= setInterval(startrter, 1000)
+    })
+
+    let isPaused = false;
+
+     pauseBtn.addEventListener("click", function () {
+      if (!isPaused) {
+        clearInterval(pauseInterval);
+        pauseBtn.textContent = "RESUME";
+        isPaused = true;
+    } else {
+      setInterval(startrter, 1000);
+        pauseBtn.textContent = "PAUSE";
+        isPaused = false;
+    }
+     })
+
+     //select timeFare, initial total, tax & total
+     const showTimefare=document.querySelector(".js-timeFare");
+     const showInitialtotal=document.querySelector(".js-initialTotal")
+     const showTax=document.querySelector(".js-Tax")
+     const ToTal=document.querySelector(".js-Total")
+
+     stopRideBtn.addEventListener("click", function () {
+      clearInterval(pauseInterval);
+      container3.style.display="none"
+      container4.style.display="flex"
+      // showTimefare.innerHTML=Number(minuts*60)+ Number(seconds);
+      const baseFare=2000;
+      //time fare which converts time to seconds and multiplies by #100
+      const timeFare=(Number(minuts*60)+ Number(seconds))*100
+      showTimefare.innerHTML=`Time fare:₦${timeFare}`
+
+      const IT=baseFare+timeFare
+      showInitialtotal.innerHTML=`Initial Total:${IT}`
+
+      const Tax=(10/100)*IT
+      showTax.innerHTML=`Tax(10%):${Tax}`
+
+      const total=Tax+IT
+      ToTal.innerHTML=`Total Amount:${total}`
+     })
+
+    //  const showTimefare=document.querySelector(".js-timeFare");
+    //  showTimefare.innerHTML=minuts
+
+     paymenteBtn.addEventListener("click", function (params) {
+      HomeBtn.style.display="flex"
+     })
+
+     HomeBtn.addEventListener("click", function (params) {
+      container.style.display="flex"
+      container4.style.display="none"
+      from.value=""
+      to.value=""
+     })
+
+  </script>
+</body>
+</html>

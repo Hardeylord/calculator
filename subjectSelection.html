@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <label for="">
+      <input class="check" type="checkbox"><span>Math</span>
+  </label>
+  <label for="">
+      <input class="check" type="checkbox"><span>English</span>
+  </label>
+  <label for="">
+      <input class="check" type="checkbox"><span>Civic</span>
+  </label>
+  <label for="">
+      <input class="check" type="checkbox"><span>Agric</span>
+  </label>
+  <h1>Subject</h1>
+  <div class="ticked"></div>
+  <script>
+    const ticked = document.querySelector('.ticked');
+    const boxs = document.querySelectorAll('.check')
+
+    boxs.forEach(box => {
+      box.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          console.log(e);
+          //getting value in the span
+          //Gets the parent element of the checkbox, which is the <label>
+          const parent=e.target.parentElement
+          //Finds the <span> element inside the <label>
+          const span=parent.querySelector('span');
+          //Extracts the text content of the <span>
+          const text=span.textContent
+          createTicked(text);
+          //Removes the entire <label> element (including the checkbox and span)
+          parent.remove()
+        }
+      })
+
+    });
+    function createTicked(text) {
+     const p=document.createElement('p');
+     //Sets the text content of the <p> element to the subject name
+     p.textContent=text 
+     ticked.appendChild(p);
+    }
+
+
+    // for (let index = 0; index < box.length; index++) {
+    //   const allBox = box[index];
+    //   //console.log(allBox);
+    //   allBox.addEventListener('change', ()=>{
+    //     if (allBox.checked) {
+    //       this.parentNode.remove();
+    //       const labelText = allBox.parentNode.textContent
+    //       const para=document.createElement('li');
+    //       para.textContent=labelText;
+    //       ticked.appendChild(para);
+    //     }
+    //   })
+    // }
+  </script>
+</body>
+
+</html>

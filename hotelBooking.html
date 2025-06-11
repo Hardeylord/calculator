@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="hotel.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- SCREEN 1 -->
+    <div class="screen-1">
+      <div class="opening">
+        <h1>WELCOME</h1>
+        <button>Provide Your Name</button>
+      </div>
+      <div class="forms">
+        <div class="input-field1">
+          <span>First Name</span>
+          <div><input type="text" id="name1"></div>
+        </div>
+        <div class="input-field2">
+          <span>Last Name</span>
+          <div><input type="text" id="name2"></div>
+        </div>
+      </div>
+      <button class="nextBtn">Next</button>
+    </div>
+
+    <!-- SCREEN 2 -->
+    <div class="screen-2" style="display: none;">
+      <div class="opening">
+        <button>Provide Your Name</button>
+      </div>
+      <div class="dropdown-menu">
+        <h1 style="font-size: 15px;">Type of Accomodation</h1>
+        <select name="" id="">
+          <option value="">Free Accomodation</option>
+          <option value="">Hotel Accomodation</option>
+        </select>
+      </div>
+      <button class="nextBtn">Next</button>
+    </div>
+  </div>
+  
+  <script>
+    //select and get value of input fields
+    const firstName=document.getElementById("name1")
+    const secondName=document.getElementById("name2")
+
+    //confirm input type
+    const confirmFirstName=/^[a-zA-Z]+$/
+    
+    const nextBtn=document.querySelector('.nextBtn')
+
+    //screen-1
+    const screen1=document.querySelector('.screen-1');
+    const screen2=document.querySelector('.screen-2');
+
+    nextBtn.addEventListener("click", function () {
+      //form validation
+      const valueFirstName=firstName.value
+      const valuesecondName=secondName.value
+      if (!valueFirstName) {
+        alert(`Please enter your First Name`)
+        return;
+      } else if (!confirmFirstName.test(valueFirstName)) {
+        alert(`Name cannot have numbers`)
+      }
+
+      if (!valuesecondName) {
+        alert(`Please enter your last Name`)
+        return;
+      } else if (!confirmFirstName.test(valuesecondName)) {
+        alert(`Name cannot have numbers`)
+        return;
+      }
+
+      screen1.style.display="none"
+      screen2.style.display="flex"
+
+    })
+
+  </script>
+</body>
+</html>

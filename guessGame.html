@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>  
+  <h1>
+    guess my number game
+  </h1>
+  <h2>Start Guessing....</h2>
+  <input type="text" class="enteredValue">
+  <button class="check">Check</button>
+  <button style="display: none;" class="play-again">Play again</button>
+  <p class="EnteredValueRemark"></p>
+  <p class="generatedNumber"></p>
+  <h3 class="write-score"></h3>
+  <h5 class="write-Hscore">Highest Score:</h5>
+
+  <script>
+    //getting entered value
+    let enteredValue=document.querySelector('.enteredValue')
+    //generate random umber
+    let randomValue=Math.trunc(((Math.random()*(130-100+1))+100));
+    //remark for entered value
+    let EnteredValueRemark=document.querySelector('.EnteredValueRemark')
+    console.log(randomValue);
+    //get btn clicked
+    let btn=document.querySelector('.check');
+    //generatedNumber
+    let gen=document.querySelector('.generatedNumber')
+    //for score
+    let writeScore=document.querySelector('.write-score');
+
+    //scoring system
+    let score=20;
+    let HighestScore=0;
+    function ScoreLine() {
+      score=score-5
+      if (score == 0) {
+        //when the scored has decreased to 0
+        document.querySelector('body').style.backgroundColor='red'
+        EnteredValueRemark.innerHTML='GAME OVER'
+        EnteredValueRemark.style.color='white'
+        gen.innerHTML=`the number is ${randomValue}`
+       // writeScore.innerHTML=`${score}`;
+        //console.log(`${score} game over`); 
+        document.querySelector('.check').style.display='none';
+        document.querySelector('.play-again').style.display='inline-block';
+      }
+      
+    }
+
+     //add eventListener
+    btn.addEventListener('click', function () {
+      let EnteredValue=Number(enteredValue.value);
+      //check if value entered is valid
+      if (!(EnteredValue) || isNaN(EnteredValue) || EnteredValue < 100 || EnteredValue > 130) {
+        EnteredValueRemark.innerHTML='Please enter a value that is within the range of 100 and 130'
+        EnteredValueRemark.style.color='red'
+        ScoreLine()
+          
+      } else if (EnteredValue < randomValue) {
+        EnteredValueRemark.innerHTML='number is too low'
+        EnteredValueRemark.style.color='blue'
+        ScoreLine()
+        
+      } else if (EnteredValue > randomValue) {
+        EnteredValueRemark.innerHTML='number is too high'
+        EnteredValueRemark.style.color='gold'
+        ScoreLine()
+        
+      } else if (EnteredValue == randomValue) {
+        //when you are correct
+        EnteredValueRemark.innerHTML='you are correct'
+        document.querySelector('body').style.backgroundColor='green'  
+        document.querySelector('.check').style.display='none';
+        document.querySelector('.play-again').style.display='inline-block';
+        //gen.innerHTML=`the number is ${randomValue}`
+        writeScore.innerHTML=`You Scored: ${score}`;
+        if (score>HighestScore) {
+          HighestScore=score
+          document.querySelector('.write-Hscore').innerHTML=`Highest Score: ${HighestScore}`
+        }      
+      }
+    })
+
+    //get btn2 clicked
+    let enteredValue2=document.querySelector('.enteredValue')
+    let btn2=document.querySelector('.play-again');
+    btn2.addEventListener('click', function () {
+      //to playAgain
+       score=20;
+       enteredValue2.value="";
+       EnteredValueRemark.innerHTML="";
+       writeScore.innerHTML="";
+       gen.innerHTML="";
+      // document.querySelector('.write-Hscore').innerHTML=`Highest Score:${score}`
+      //generate another random number
+       randomValue=Math.trunc(((Math.random()*(130-100+1))+100));
+      console.log(randomValue);
+      //let the play-again btn disappear
+      document.querySelector('body').style.backgroundColor='white'
+      document.querySelector('.check').style.display='inline-block';
+        document.querySelector('.play-again').style.display='none';
+      
+    })
+  </script>
+</body>
+</html>

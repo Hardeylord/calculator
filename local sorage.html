@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" class="todo">
+  <button class="submit">Add Task</button>
+  <ul class="ls">
+  </ul>
+  <script>
+    let enteredTodo=document.querySelector('.todo')
+    const clickedAdd=document.querySelector('.submit');
+    const outputParagraph=document.querySelector('.ls')
+
+    todos=JSON.parse(localStorage.getItem('myTodo')) || [];
+
+   // function renderTodo() {
+      outputParagraph.innerHtml='';
+    for (let index = 0; index < todos.length; index++) {
+      const li=document.createElement('li');
+      li.textContent=todos[index];
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Delete';
+      delBtn.style.marginLeft = '10px';
+      delBtn.addEventListener('click', function () {
+        todos.splice(index, 1);
+          // Update localStorage
+          localStorage.setItem('myTodo', JSON.stringify(todos));
+      this.parentNode.remove();
+    });
+
+    li.appendChild(delBtn);
+      outputParagraph.appendChild(li);
+    }
+   // }
+    //renderTodo()
+
+    clickedAdd.addEventListener('click',()=>{
+      const todo=enteredTodo.value.trim();
+      if (todo === '') {
+        alert('enter something')
+        return;
+      }
+
+      todos.push(todo);
+      localStorage.setItem('myTodo',JSON.stringify(todos));
+      
+      const li=document.createElement('li');
+      li.textContent=todo;
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Delete';
+      delBtn.style.marginLeft = '10px';
+
+      li.appendChild(delBtn);
+      outputParagraph.appendChild(li);
+      //outputParagraph.innerHTML=todo;
+      enteredTodo.value="";
+    })
+  </script>
+</body>
+</html>

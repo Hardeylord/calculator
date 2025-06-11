@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="countDown"></div>
+  <script>
+    //let time=
+    let newYear=new Date('june 7, 2025 15:14:00').getTime()
+    let myOutput=document.querySelector('.countDown')
+
+    
+    function countDown() {
+    let now=new Date().getTime();
+
+    let distance=newYear-now;
+    let days=Math.floor(distance/(24*60*60*1000));
+    let hours=Math.floor(distance%(24*60*60*1000)/(60*60*1000))
+    let minutes=Math.floor(distance%(60*60*1000)/(60*1000))
+    let seconds=Math.floor(distance%(60*1000)/(1000))
+
+
+    if (distance < 0) {
+      clearInterval(timeId)
+      myOutput.innerHTML=`happy new year`
+      console.log('happy new year');
+    }
+    days=(days<10)? '0'+days:days
+    hours=(hours<10)? '0'+hours:hours
+    minutes=(minutes<10)? '0'+minutes:minutes
+    seconds=(seconds<10)? '0'+seconds:seconds
+    myOutput.innerHTML=`${days}D: ${hours}H: ${minutes}M: ${seconds}S:`
+    //console.log();
+    
+    
+  }
+
+  let timeId= setInterval(countDown, 1000)
+
+    //setTimeout and interval
+    // let myDelay=(phrase, who)=>{
+    //   alert(`${phrase} ${who}`)
+    // }
+    // let delayRun=setInterval(myDelay, 2000, 'welcome to class', 'dipo')
+    
+    //
+    // function printNumberFrom(from, to) {
+    //   let current=from;
+    //   function go() {
+    //     alert(current)
+    //     if (current == to) {
+    //       clearInterval(x)
+    //       alert(`the end`)
+    //     }
+    //     current++
+    //   }
+    //   go()
+    //   let x=setInterval(go, 1000)
+    // }
+
+    // printNumberFrom(1,10)
+
+
+  </script>
+</body>
+</html>

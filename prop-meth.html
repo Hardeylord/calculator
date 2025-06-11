@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 class="message"></h1>
+  <script>
+    const newClass=document.querySelector('.message');
+    //createElement
+    const newPara=document.createElement('p');
+    const newButton=document.createElement('button');
+    //what you want to add to it
+    newPara.textContent='hello boss';
+    newButton.textContent='submit';
+    //where you want to add it
+    newClass.appendChild(newPara);
+    newClass.appendChild(newButton);
+
+        //properties and methods
+        //last index of =>returns the first occurnce of a string
+        const text="hello world!";
+    console.log(text.lastIndexOf("wo"));
+
+      //tofixed=>rounds a number to a specified number of didgit after decimal and returns  a string
+      const num=3.146278;
+      const fixedNum=num.toFixed();
+      console.log(1+fixedNum);
+
+      //math.floor=>rounds a number down to the nearest integer
+      const nNum=8.3
+      console.log(Math.floor(nNum));
+      
+      //object.hasOwn() returns a true value if the specified object has the indicated property as it own
+      const obj1={
+        prop:'exists'
+      }
+      const obj2={
+        computers:"dell"
+      }
+      console.log(Object.hasOwn(obj1, "prop"));
+      console.log(Object.hasOwn(obj2,"computers"));
+      
+      //isArray checks wethere the passed value is an array
+      console.log(Array.isArray([3,45,5,7]));
+      
+      
+      
+      
+    
+  </script>
+</body>
+</html>

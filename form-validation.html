@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <form id="registration-form">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username">
+      <span id="usernameError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" id="email">
+      <span id="emailError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="text" id="password">
+      <span id="passwordError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="text" id="confirmPassword">
+      <span id="confirmError" class="error"></span>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const usernameFormat = /^[a-zA-Z0-9]+$/;
+    const emailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&])[a-zA-Z0-9!@#\$%\^&]{5,15}$/;
+
+    const regForm = document.getElementById("registration-form");
+
+    regForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let sunday = true;
+
+      // Get input values
+      const usernameValue = document.getElementById("username").value.trim();
+      const emailValue = document.getElementById("email").value.trim();
+      const passwordValue = document.getElementById("password").value.trim();
+      const confirmPasswordValue = document.getElementById("confirmPassword").value.trim();
+
+      // Get error span elements
+      const usernameError = document.getElementById("usernameError");
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
+      const confirmPasswordError = document.getElementById("confirmError");
+
+      // Clear previous errors
+      usernameError.textContent = "";
+      emailError.textContent = "";
+      passwordError.textContent = "";
+      confirmPasswordError.textContent = "";
+
+      // Validation functions
+      function usernameValidation() {
+        if (usernameValue === "") {
+          usernameError.textContent = "Please enter your username";
+          sunday = false;
+        } else if (!usernameValue.match(usernameFormat)) {
+          usernameError.textContent = "Username must be alphanumeric";
+          sunday = false;
+        }
+      }
+
+      function emailValidation() {
+        if (emailValue === "") {
+          emailError.textContent = "Please enter your email address";
+          sunday = false;
+        } else if (!emailFormat.test(emailValue)) {
+          emailError.textContent = "Invalid email format";
+          sunday = false;
+        }
+      }
+
+      function passwordValidation() {
+        if (passwordValue === "") {
+          passwordError.textContent = "Please enter your password";
+          sunday = false;
+        } else if (!passwordFormat.test(passwordValue)) {
+          passwordError.textContent = "Password must include uppercase, lowercase, number, and special character";
+          sunday = false;
+        }
+      }
+
+      function confirmPasswordValidation() {
+        if (confirmPasswordValue === "") {
+          confirmPasswordError.textContent = "Please confirm your password";
+          sunday = false;
+        } else if (confirmPasswordValue !== passwordValue) {
+          confirmPasswordError.textContent = "Passwords do not match";
+          sunday = false;
+        }
+      }
+
+      // Run all validations
+      usernameValidation();
+      emailValidation();
+      passwordValidation();
+      confirmPasswordValidation();
+
+      // Submit if valid
+      if (sunday) {
+        alert("Form submitted successfully!");
+        // regForm.submit(); // Uncomment this to actually submit to a backend
+      }
+    });
+  </script>
+</body>
+</html>

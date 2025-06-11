@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="registartion-form">
+    <div>
+      <label for="username">Username</label>
+      <input type="text" id="username">
+      <span id="usernameError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="username">Email:</label>
+      <input type="text" id="email">
+      <span id="emailError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="username">Password</label>
+      <input type="text" id="password">
+      <span id="passwordError" class="error"></span>
+    </div>
+
+    <div>
+      <label for="username">Confirm Password:</label>
+      <input type="text" id="confirmPassword">
+      <span id="confirmError" class="error"></span>
+    </div>
+    <button type="submit">submit</button>
+  </form>  
+  <script>
+
+    const usernameFormat=/^[a-zA-Z0-9]+$/;
+    const emailFormat=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordFormat=/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[!@#\$%\^&])[a-zA-Z0-9!@#\$%\^&]{5,15}$/;
+
+    const usernameValue=document.getElementById("username").value;
+    const emailValue=document.getElementById("email").value;
+    const passwordValue=document.getElementById("password").value;
+    const confirmPasswordValue=document.getElementById("confirmPassword").value;
+
+    const usernameError=document.getElementById("usernameError")
+    const emailError=document.getElementById("emailError")
+    const passwordError=document.getElementById("passwordError")
+    const confirmPasswordError=document.getElementById("confirmError")
+
+    let sunday=true;
+
+    function usernameValidation() {
+      if (usernameValue === '') {
+       // alert("please enter a valid username")
+        usernameError.innerHTML="please enter your username"
+        sunday=false;
+      } else if (!usernameValue.match(usernameFormat)) {
+        //alert("please enter your username")
+        usernameError.innerHTML="please enter a valid username"
+        
+        sunday=false;
+      }
+    }
+    function emailValidation() {
+      if (emailValue === '') {
+       // alert("please enter an email address")
+       emailError.innerHTML="please enter a valid email address"
+        sunday=false;
+      } else if (!emailValue.match(emailFormat)) {
+       // alert("please enter a valid email address")
+       emailError.innerHTML="please enter a valid email address"
+        sunday=false;
+      }  
+    }
+    function passwordValidation() {
+      if (passwordValue === '') {
+       // alert("please enter your password")
+       passwordError.innerHTML="please enter a valid email address"
+        sunday=false;
+      }
+      else if (!passwordValue.match(passwordFormat)) {
+       // alert("please enter a password with upper&lowercase with numbers and characters")
+       passwordError.innerHTML="please enter a valid email address"
+        sunday=false;
+      }
+    }
+    function confirmPasswordValidation() {
+      if (confirmPasswordValue !== passwordValue) {
+        //alert("Password are not same")
+        confirmPasswordError.innerHTML="Password are not same"
+        sunday=false;
+      } else if (confirmPasswordValue =='') {
+       // alert("please enter your password to confirm")
+       confirmPasswordError.innerHTML="please enter your password to confirm"
+        sunday=false;
+      }
+    }
+
+    const regForm=document.getElementById("registartion-form");
+    regForm.addEventListener('submit', (x)=>{
+      x.preventDefault();
+      //function formValidate() {
+        usernameValidation();
+        emailValidation();
+        passwordValidation();
+        confirmPasswordValidation();
+        if (sunday) {
+          regForm.submit();
+        }
+     // }
+    })
+  </script>
+</body>
+</html>
