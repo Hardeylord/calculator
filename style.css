@@ -13,7 +13,7 @@ a{
 }
 
 a:hover{
-  color: yellow;
+  color: #030d4f;
 }
 
 header{
@@ -48,7 +48,7 @@ header{
 }
 
 .action-btn{
-  background-color: orange;
+  background-color: #030d4f;
   color: #fff;
   padding: 0.5rem 1rem;
   border: none;
@@ -112,24 +112,33 @@ header{
   height: 240px;
 }
       .loan{
-      background-color: blue;
+      background-color: rgb(81, 80, 80);
       padding-left: 10px;
       padding-right: 10px;
       padding-top: 30px;
       padding-bottom: 30px;
       width: 300px;
-      border-radius: 30px;
+      border-radius: 20px;
+      height: 500px;
       color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .calcio{
-      background-color: yellow;
+      background-color: #0a3300;
       padding-left: 10px;
       padding-right: 10px;
       padding-top: 30px;
       padding-bottom: 30px;
       width: 300px;
-      border-radius: 30px;
+      border-radius: 20px;
+      height: 500px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .investS{
@@ -139,7 +148,12 @@ header{
       padding-top: 30px;
       padding-bottom: 30px;
       width: 300px;
-      border-radius: 30px;
+      border-radius: 20px;
+      height: 500px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .retireS{
       background-color: green;
@@ -148,7 +162,20 @@ header{
       padding-top: 30px;
       padding-bottom: 30px;
       width: 300px;
-      border-radius: 30px;
+      border-radius: 20px;
+      height: 500px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contain{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 10px;
+      column-gap: 10px;
     }
     
   

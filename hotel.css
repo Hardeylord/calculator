@@ -71,20 +71,59 @@ button.nextBtn{
   background-color: #001F3F;
   border-radius: 30px;
   flex-direction: column;
-  display: flex;      
+  display: flex; 
+  justify-content: center;     
 }
-.dropdown-menu{
-  align-self: center;
-  background-color: #FFD700;
-  height: 100px;
-  width: 250px;
+.select-accod{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  border-radius: 10px;
 }
-select{
-  height: 20px;
+.freeBtn{
+  margin-bottom: 10px;
+}
+
+.screen-3{
+  width: 350px;
+  height: 600px;
+  background-color: #001F3F;
+  border-radius: 30px;
+  flex-direction: column;
+  display: flex; 
+  justify-content: center;     
+}
+
+.durationDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen-4{
+  width: 350px;
+  height: 600px;
+  background-color: #001F3F;
+  border-radius: 30px;
+  flex-direction: column;
+  display: flex; 
+  justify-content: center;     
+}
+
+.explanation{
+  text-align: center;
+  align-self: center; 
+  font-size: 15px; 
+  color: white;
+}
+
+.screen-5{
+  width: 350px;
+  height: 600px;
+  background-color: #001F3F;
+  border-radius: 30px;
+  flex-direction: column;
+  display: flex; 
+  justify-content: center;     
 }

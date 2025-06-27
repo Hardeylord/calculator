@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>Food stufs</h1>
+  <input type="text" placeholder="input task" class="anything">
+  <ul id="plusone">
+
+  </ul>
+
+  <button onclick="david()">Create</button>
+
+  <hi class="girl">demilade is nice</hi>
+  <hi class="girl">unice is naughty</hi>
+  <hi class="girl">demilade is ugly</hi>
+  <script>
+    function david() {
+    
+    let mytask=document.querySelector('.anything').value
+    let myList=document.createElement('li')
+    let myContent=document.createTextNode(mytask);
+    myList.appendChild(myContent)
+    //create span and span
+    // myList.className='myStuff'
+    let listBody=document.getElementById('plusone');
+    listBody.insertBefore(myList, listBody.childNodes[0])
+    document.querySelector('.anything').value=''
+    console.log(myList);
+
+  }
+    
+  </script>
+</body>
+</html>

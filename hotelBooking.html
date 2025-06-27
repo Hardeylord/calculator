@@ -30,19 +30,56 @@
 
     <!-- SCREEN 2 -->
     <div class="screen-2" style="display: none;">
-      <div class="opening">
-        <button>Provide Your Name</button>
+      <div class="select-accod">
+        <h1 style="align-self: center; font-size: 15px; color: white;">Select  Accomodation</h1>
+          <button class="freeBtn">Free Accomodation</button>
+          <button class="hotelBtn">Hotel Accomodation</button>
       </div>
-      <div class="dropdown-menu">
-        <h1 style="font-size: 15px;">Type of Accomodation</h1>
-        <select name="" id="">
-          <option value="">Free Accomodation</option>
-          <option value="">Hotel Accomodation</option>
-        </select>
-      </div>
-      <button class="nextBtn">Next</button>
+    </div>
+
+    <!-- SCREEN 3 -->
+  <div class="screen-3" style="display: none;">
+    </select>
+    <div class="select-accod">
+      <h1 style="align-self: center; font-size: 15px; color: white;">Room Type/Nights</h1>
+      <select name="" id="selectRoom">
+        <option value="0">Select room type</option>
+        <option value="5000">Standard-₦5,000</option>
+        <option value="15000">Emerald-₦15,000</option>
+        <option value="25000">Supreme-₦25,000</option>
+        <option value="50000">Presidential-₦50,000</option>
+      </select>
+        <div class="durationDiv">
+          <h1 style="align-self: center; font-size: 15px; color: white;">How long would you be staying</h1>
+          <!-- <input class="duration" type="text"> -->
+          <input id="dateInput" type="date">
+        </div>
+        <button style="margin-top: 20px;" class="standardBtn">Continue</button>
     </div>
   </div>
+
+  <!-- SCREEN 4 -->
+  <div class="screen-4" style="display: none;">
+    <div class="select-accod">
+      <h1 class="explanation"></h1>
+        <button style="margin-bottom: 10px;" class="cancelBtn">Cancel</button>
+        <button class="contineBtn">Continue</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 5 -->
+  <div class="screen-5" style="display: none;">
+    <div class="select-accod">
+      <h1 style="color: white;">Your rent expires in</h1>
+      <p style="color: white;" class="countdown"></p>
+        <!-- <button style="margin-bottom: 10px;" class="cancelBtn">Cancel</button>
+        <button class="contineBtn">Continue</button> -->
+    </div>
+  </div>
+
+
+  </div>
+</div>
   
   <script>
     //select and get value of input fields
@@ -57,6 +94,9 @@
     //screen-1
     const screen1=document.querySelector('.screen-1');
     const screen2=document.querySelector('.screen-2');
+    const screen3=document.querySelector('.screen-3');
+    const screen4=document.querySelector('.screen-4');
+    const screen5=document.querySelector('.screen-5');
 
     nextBtn.addEventListener("click", function () {
       //form validation
@@ -82,6 +122,78 @@
 
     })
 
+    const hotelBtn=document.querySelector('.hotelBtn')
+    hotelBtn.addEventListener("click", function () {
+      screen2.style.display="none"
+      screen3.style.display="flex"
+    })
+
+    const duration=document.querySelector('.duration')
+    const standardBtn=document.querySelector('.standardBtn')
+    const confirmNights=/^[0-9]+$/;
+
+    standardBtn.addEventListener("click", function () {
+      const selectRoom=document.getElementById('selectRoom');
+      const valueSelectedRoom=selectRoom.value;
+      // const durationValue=duration.value
+
+      const selectedText = selectRoom.options[selectRoom.selectedIndex].textContent;
+      
+      // if (durationValue === '') {
+      //   alert("enter the number of night you will be spending");
+      //   return;
+      // } else if (!confirmNights.test(durationValue)) {
+      //   alert('only numbers are allowed')
+      //   return;
+      // }
+
+      if (valueSelectedRoom == 0) {
+        alert(`Please select a room from the drop down`)
+        return;
+      }
+
+      //alert(`you selected ${selectedText} per nights`)
+        let explanation=document.querySelector('.explanation')
+        // explanation.innerHTML=`You selected ${selectedText} per nights <br> for ${durationValue} nights<br>Costing ₦${durationValue*valueSelectedRoom}`
+        screen3.style.display="none";
+        screen4.style.display="flex";
+    })
+    const cancelBtn=document.querySelector('.cancelBtn');
+    const contineBtn=document.querySelector('.contineBtn');
+
+    cancelBtn.addEventListener("click", function (params) {
+       screen3.style.display="flex";
+        screen4.style.display="none";
+    })
+
+    contineBtn.addEventListener("click", function () {
+      screen4.style.display="none";
+      screen5.style.display="flex";
+      const dateInput=document.getElementById('dateInput');
+      const ValuedateInput=dateInput.value;
+      
+      let myTimer=function () {
+        const ValuedateInput=dateInput.value;
+        let countDownDate=new Date(ValuedateInput).getTime();
+        const currentDate=new Date().getTime();
+        let distance=countDownDate-currentDate
+        //console.log(distance);
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+        let minutes = Math.floor((distance / (1000 * 60)) % 60);
+        let seconds = Math.floor((distance / 1000) % 60);
+
+        if (distance <=0) {
+          clearInterval(myTimer)
+        }
+
+        const countdown=document.querySelector('.countdown');
+        countdown.innerHTML=`${days}D: ${hours}H: ${minutes}M: ${seconds}S:`
+      }
+      setInterval(myTimer, 1000)
+       
+    })
   </script>
 </body>
 </html>
