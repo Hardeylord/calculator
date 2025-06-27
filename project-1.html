@@ -25,6 +25,7 @@
       <span>To:</span><div><input class="inputFrom2 to" type="text"></div>
     </div>
   </div>
+  <p style="align-self: center;" class="locationErr"></p>
   <div class="btnBr">
     <button class="js-btnBr css-btnBr">BOOK RIDE<i class="fa-solid fa-arrow-right"></i></button>
   </div>
@@ -109,20 +110,25 @@
     bookBtn.addEventListener("click", function () {
       const fromTxt=from.value;
       const toTxt=to.value;
+      const locationErr=document.querySelector(".locationErr")
       //validate Form
       if (!fromTxt) {
-        alert('please enter your current location')
+        locationErr.innerHTML="please enter your current location"
+        locationErr.style.color="red"
         return;
       } else if (!fromConfirm.test(fromTxt)) {
-        alert('please location can only be in alphabet')
+        locationErr.innerHTML="please location can only be in alphabet"
+        locationErr.style.color="red"
         return;
       }
 
       if (!toTxt) {
-        alert('please enter the  location you are heading to')
+        locationErr.innerHTML="please enter the  location you are heading to"
+        locationErr.style.color="red"
         return;
       } else if (!fromConfirm.test(toTxt)) {
-        alert('please location can only be in alphabet')
+        locationErr.innerHTML="please location can only be in alphabet"
+        locationErr.style.color="red"
         return;
       }
       

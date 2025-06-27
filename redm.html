@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      background-color: red;
+      color: black;
+      height: 60px;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .display{
+      height: 250px;
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <button>read more</button>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis facere doloremque est adipisci provident, quis totam sapiente nemo dolores porro magni, tenetur nisi, aliquid harum distinctio obcaecati ratione et asperiores.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero asperiores doloremque ut excepturi, nisi rem, ducimus maxime architecto delectus, eius ipsam esse. Quibusdam omnis sequi at! Accusantium similique est repellendus!</p>
+
+  </div>
+
+  <script>
+    const btn=document.querySelector("button");
+    
+    btn.addEventListener("click", function (params) {
+      const message=document.querySelector(".message");
+      if (message.classList.contains("display")) {
+        message.classList.remove("display")
+      } else{
+        message.classList.add("display")
+      }
+    })
+  </script>
+</body>
+</html>

@@ -31,8 +31,8 @@
     <!-- SCREEN 2 -->
     <div class="screen-2" style="display: none;">
       <div class="select-accod">
-        <h1 style="align-self: center; font-size: 15px; color: white;">Select  Accomodation</h1>
-          <button class="freeBtn">Free Accomodation</button>
+        <h1 style="align-self: center; font-size: 15px; color: white;"><p class="Gname"></p></h1>
+          <!-- <button class="freeBtn">Free Accomodation</button> -->
           <button class="hotelBtn">Hotel Accomodation</button>
       </div>
     </div>
@@ -55,6 +55,7 @@
           <input id="dateInput" type="date">
         </div>
         <button style="margin-top: 20px;" class="standardBtn">Continue</button>
+        <p class="durationError"></p>
     </div>
   </div>
 
@@ -119,6 +120,8 @@
 
       screen1.style.display="none"
       screen2.style.display="flex"
+      let Gname=document.querySelector('.Gname');
+      Gname.innerHTML=`welcome ${valueFirstName} ${valuesecondName}`
 
     })
 
@@ -133,28 +136,31 @@
     const confirmNights=/^[0-9]+$/;
 
     standardBtn.addEventListener("click", function () {
+      let durationError=document.querySelector('.durationError');
       const selectRoom=document.getElementById('selectRoom');
       const valueSelectedRoom=selectRoom.value;
-      // const durationValue=duration.value
+      const dateInput=document.getElementById('dateInput');
+      
 
       const selectedText = selectRoom.options[selectRoom.selectedIndex].textContent;
-      
-      // if (durationValue === '') {
-      //   alert("enter the number of night you will be spending");
-      //   return;
-      // } else if (!confirmNights.test(durationValue)) {
-      //   alert('only numbers are allowed')
-      //   return;
-      // }
 
       if (valueSelectedRoom == 0) {
-        alert(`Please select a room from the drop down`)
+        durationError.innerHTML="please select a room type"
+        durationError.style.color="red"
         return;
       }
-
-      //alert(`you selected ${selectedText} per nights`)
         let explanation=document.querySelector('.explanation')
-        // explanation.innerHTML=`You selected ${selectedText} per nights <br> for ${durationValue} nights<br>Costing ₦${durationValue*valueSelectedRoom}`
+        const valueFirstName=firstName.value
+        const valuesecondName=secondName.value
+        const ValuedateInput=dateInput.value;
+        let countDownDate=new Date(ValuedateInput).getTime();
+        const currentDate=new Date().getTime();
+        let distance=countDownDate-currentDate
+        //console.log(distance);
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        // let hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+        explanation.innerHTML=`Hey ${valueFirstName} ${valuesecondName} do you accpet to ${selectedText} for ${days} Nights`
         screen3.style.display="none";
         screen4.style.display="flex";
     })

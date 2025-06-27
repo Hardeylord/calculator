@@ -12,13 +12,15 @@
     <div class="navbar">
       <div class="logo"><a href="#">My projects</a></div>
       <ul class="links">
-        <li><a href="http://">Calculators</a></li>
+        <li><a href="index.html">Calculators</a></li>
         <li><a href="http://">Loops</a></li>
         <li><a href="guessGame.html">Guess</a></li>
         <li><a href="History.html">Documentation</a></li>
         <li><a href="subjectSelection.html">Subject</a></li>
         <li><a href="hotelBooking.html">Hotel</a></li>
-      <li><a href="project-1.html">Uber</a></li>
+        <li><a href="form-validation.html">Form Validation</a></li>
+        <li><a href="project-1.html">Uber</a></li>
+        <li><a href="loopPm.html">primeNumber</a></li>
       </ul>
       <a href="http://" class="action-btn">Get Started</a>
       <div class="toggle-btn">
@@ -26,13 +28,14 @@
       </div>
     </div>
     <div class="dropdown-menu">
-      <li><a href="http://">Calculators</a></li>
+      <li><a href="index.html">Calculators</a></li>
       <li><a href="http://">Loops</a></li>
-      <li><a href="http://">Contact</a></li>
-      <li><a href="http://">Services</a></li>
+      <li><a href="guessGame.html">Guess</a></li>
+      <li><a href="History.html">Documentation</a></li>
+      <li><a href="subjectSelection.html">Subject</a></li>
       <li><a href="hotelBooking.html">Hotel</a></li>
+      <li><a href="form-validation.html">Form Validation</a></li>
       <li><a href="project-1.html">Uber</a></li>
-      <li><a href="http://" class="action-btn">Get Started</a></li>
     </div>
   </header>
 
@@ -58,19 +61,21 @@
   <p>Loan Interest: 15%</p>
   <button onclick="LOAN()">Calculate</button>
   <p class="answer"></p>
+  <p class="loanError"></p>
 </div>
   <br>
   <!--calculator-->
   <div class="calcio">
   <h1>Simple Calculator</h1>
     <p>Input number</p>
-    <input type="text" class="value1">
+    <input type="number" class="value1">
     <br>
     <span id="mysymbol" class="symbol"></span>
     <br>
-    <input type="text" class="value2">
+    <input type="number" class="value2">
     <br>
     <p class="solution"></p>
+    <p class="calcError"></p>
     <br>
     <button class="btn" onclick="addOperation()">+</button>
     <button class="btn" onclick="minusOperation()">-</button>
@@ -81,7 +86,7 @@
     <div class="investS">
     <br>
     <h3>How much do you wish to invest</h3>
-    <input type="text" class="invested">
+    <input type="number" class="invested">
   <br>
   <select name="" id="years">
     <option value="1">1 year</option>
@@ -96,14 +101,16 @@
   <button onclick="investment()">Calculate ROI</button>
   <br>
   <p class="paragraph"></p>
+  <p class="investmentError"></p>
 </div>
 <!--RETIREMENT-->
 <div class="retireS">
 <h3>Retirement calculator</h3>
     <h3>What year where you born</h3>
-    <input type="text" class="Born-year">
+    <input type="number" class="Born-year">
     <br>
     <div class="when"></div>
+    <p class="rtYeartError"></p>
     <br>
     <button onclick="rtYear()">Calculate</button>
   </div>
@@ -113,6 +120,7 @@
     function LOAN() {
       //Amount
       const Amount=document.querySelector('.amount');
+      const loanError=document.querySelector('.loanError');
     const vAmount=Number(Amount.value);
 
       //duration
@@ -126,74 +134,107 @@
     const mthAmount=selectedYear*12;
     const amtPayedBack=tInterest+vAmount;
     const mthRepayment=amtPayedBack/mthAmount;
-
-     //display answer
-     const theAnswer=document.querySelector('.answer');
+    if (vAmount) {
+      const theAnswer=document.querySelector('.answer');
     theAnswer.innerHTML=`You will pay us ₦${Math.ceil(mthRepayment)} monthly if you borrow ₦${vAmount} from us for ${selectedYear} year`
-
-
-    // alert(`Total interest after ${selectedYear} year(s) if ₦${vAmount} is borrowed is ₦${tInterest} \n Therefore you will pay us ₦${tInterest+vAmount} after ${selectedYear} years or pay us ₦${mthRepayment} monthly`)
+      
+    } else{
+      loanError.innerHTML="please enter how much you intend to loan from us"
+      loanError.style.color='red'
+    }
+     //display answer
     }
 
     //CALCULATOR
+    
 
     function addOperation() {
-      let v1= document.querySelector('.value1');
-  let v2= document.querySelector('.value2');
-  let calcSymbol=document.getElementById('mysymbol')
-  calcSymbol.innerHTML='+';
+      let calcError= document.querySelector('.calcError');
+      let v1= document.querySelector('.value1').value;
+      let v2= document.querySelector('.value2').value;
+      let calcSymbol=document.getElementById('mysymbol')
+      calcSymbol.innerHTML='+';
 
-  const inputValue1=Number(v1.value);
-  const inputValue2=Number(v2.value);
-  const adittion = inputValue1 + inputValue2;
-  calcSymbol.innerHTML='+';
-
-  document.querySelector('.solution').innerHTML=`Answer is ${adittion} `
+  if (v1 == "" || v2 == "") {
+      calcError.innerHTML="please enter a valid number"
+      calcError.style.color='red'
+      return;
+    
+  } else{
+      const inputValue1=Number(v1);
+      const inputValue2=Number(v2);
+      const adittion = inputValue1 + inputValue2;
+      calcSymbol.innerHTML='+';
+      document.querySelector('.solution').innerHTML=`Answer is ${adittion} `
+      calcError.innerHTML=""
+  }
     }
 
     function minusOperation() {
-      let v1= document.querySelector('.value1');
-  let v2= document.querySelector('.value2');
-  let calcSymbol=document.getElementById('mysymbol')
-  calcSymbol.innerHTML='-';
+      let calcError= document.querySelector('.calcError');
+      let v1= document.querySelector('.value1').value;
+      let v2= document.querySelector('.value2').value;
+      let calcSymbol=document.getElementById('mysymbol')
+      calcSymbol.innerHTML='-';
+      if (v1 == "" || v2 == "") {
+      calcError.innerHTML="please enter a valid number"
+      calcError.style.color='red'
+      return;
+    
+  } else{
+      const inputValue1=Number(v1);
+      const inputValue2=Number(v2);
+      const subtraction = inputValue1 - inputValue2;
+      document.querySelector('.solution').innerHTML=`Answer is ${subtraction} `
+          calcError.innerHTML=""
+  }
 
-  const inputValue1=Number(v1.value);
-  const inputValue2=Number(v2.value);
-  const adittion = inputValue1 - inputValue2;
-
-  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
     }
 
     function multiplyOperation() {
-      let v1= document.querySelector('.value1');
-  let v2= document.querySelector('.value2');
-  let calcSymbol=document.getElementById('mysymbol')
-  calcSymbol.innerHTML='*';
-
-  const inputValue1=Number(v1.value);
-  const inputValue2=Number(v2.value);
-  const adittion = inputValue1 * inputValue2;
-
-  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
+      let calcError= document.querySelector('.calcError');
+      let v1= document.querySelector('.value1').value;
+      let v2= document.querySelector('.value2').value;
+      let calcSymbol=document.getElementById('mysymbol')
+      calcSymbol.innerHTML='*';
+      if (v1 == "" || v2 == "") {
+      calcError.innerHTML="please enter a valid number"
+      calcError.style.color='red'
+      return;
+    
+  } else{
+      const inputValue1=Number(v1);
+      const inputValue2=Number(v2);
+      const multiplyOperation = inputValue1 * inputValue2;
+      document.querySelector('.solution').innerHTML=`Answer is ${multiplyOperation} `
+          calcError.innerHTML=""
+  }
     }
 
     function divisionOperation() {
-      let v1= document.querySelector('.value1');
-  let v2= document.querySelector('.value2');
-  let calcSymbol=document.getElementById('mysymbol')
-  calcSymbol.innerHTML='/';
-
-  const inputValue1=Number(v1.value);
-  const inputValue2=Number(v2.value);
-  const adittion = inputValue1 / inputValue2;
-
-  document.querySelector('.answer').innerHTML=`Answer is ${adittion} `
+      let calcError= document.querySelector('.calcError');
+      let v1= document.querySelector('.value1').value;
+      let v2= document.querySelector('.value2').value;
+      let calcSymbol=document.getElementById('mysymbol')
+      calcSymbol.innerHTML='/';
+      if (v1 == "" || v2 == "") {
+      calcError.innerHTML="please enter a valid number"
+      calcError.style.color='red'
+      return;
+    
+  } else{
+      const inputValue1=Number(v1);
+      const inputValue2=Number(v2);
+      const divisionOperation = inputValue1 / inputValue2;
+      document.querySelector('.solution').innerHTML=`Answer is ${divisionOperation} `
+          calcError.innerHTML=""
+  }
     }
 
     //investment
     function investment() {
       
-    
+      let investmentError=document.querySelector('.investmentError');
       let investedAmt=document.querySelector('.invested');
       let InvestedAmt=Number(investedAmt.value);
   
@@ -205,8 +246,15 @@
       let durationPerMonth=Duration*12;
       let totalRoi=durationPerMonth*roiPerMonth;
       let redrawableAmt=totalRoi+InvestedAmt
+
+      if (InvestedAmt) {
+        const all= document.querySelector('.paragraph');   all.innerHTML=`you will withdraw ${redrawableAmt} if you invest ${InvestedAmt} with us for ${Duration} year`;
+      
+    } else{
+      investmentError.innerHTML="please enter how much you plan to invest with us"
+      investmentError.style.color='blue'
+    }
   
-      const all= document.querySelector('.paragraph');   all.innerHTML=`you will withdraw ${redrawableAmt} if you invest ${InvestedAmt} with us for ${Duration} year`;
   
     }
 
@@ -214,12 +262,19 @@
     function rtYear() {
         const retirementAge= 65;
         let currentYear= new Date().getFullYear();
+        
         let askYear = document.querySelector('.Born-year');
         let NaskYear=askYear.value;
         let birthYear = currentYear - NaskYear;
         let retireIn = retirementAge - birthYear;
         
-        if (retireIn == 0) {
+        if (!NaskYear) {
+          let when=document.querySelector('.when');
+            when.innerHTML=`please enter what year you were born`;
+            when.style.color='red'
+          return
+        }
+        else if (retireIn == 0) {
             let when=document.querySelector('.when');
             when.innerHTML=`you will retire this year`;
         } 
@@ -227,18 +282,15 @@
             let OughtToRetire= -1*retireIn
             let when=document.querySelector('.when');
             when.innerHTML=`you ought to have retired ${OughtToRetire} year ago`;
-            //alert(`you ought to have retired ${OughtToRetire} year ago`)
         }
          else if (retireIn < 1) {
             let OughtToRetire= -1*retireIn
             let when=document.querySelector('.when');
             when.innerHTML=`you ought to have retired ${OughtToRetire} years ago`;
-           // alert(`you ought to have retired ${OughtToRetire} years ago`)
         }
          else if (retireIn < 65) {
             let when=document.querySelector('.when');
             when.innerHTML=`you will retire in ${retireIn} year(s) Time`;
-            //alert(`you will retire in ${retireIn} year(s) Time`);
         } 
     }
 

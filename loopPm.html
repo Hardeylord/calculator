@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #555;
+      font-size: 15px;
+    }
+
+    input.pm {
+      padding: 10px 15px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button.btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button.btn:hover {
+      background-color: #0056b3;
+    }
+
+    .pnError {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .pnError.success {
+      color: green;
+    }
+
+    .pnError.error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Prime Number Checker</h1>
+    <p>Please enter a number between 1000 and 1115</p>
+    <input class="pm" type="number" placeholder="Enter a number..." />
+    <button class="btn">Check</button>
+    <h1 class="pnError"></h1>
+  </div>
+  
+  <script>
+    
+    const pnError=document.querySelector('.pnError');
+    const btn=document.querySelector('.btn');
+    
+    //  let enteredValue=Number(prompt('Enter a value'));
+     let index;
+    btn.addEventListener("click", ()=>{
+      const pm=document.querySelector('.pm').value;
+      if (pm<1000 || pm> 1115 || isNaN(pm)) {
+      pnError.innerHTML="invalid number"
+      pnError.style.color="red"
+       
+     } else{
+       for (index = 2; index < pm; index++) {
+         if (pm%index==0) {
+          pnError.innerHTML=`${pm} is not a prime number`
+      pnError.style.color="red"
+           break;
+         } 
+       }
+       if (pm==index) {
+        pnError.innerHTML=`${pm} is a prime number`
+        pnError.style.color="green"
+       }
+     }
+    })
+     
+
+    // list all multiple of 7 between 83 and 115
+    // numbers that can be divided by 7 withing 83 and 115
+       for (let index = 83; index < 115; index++) {
+       if (index%7 === 0) {
+        console.log(index);  
+       }
+     }
+
+    //while
+    // let index2=0
+    // while (index2<10) {
+    //   console.log(index2); 
+    //   index2++
+      
+    // }
+
+    // let i=3;
+    // while (i) {
+    //   alert(i--)
+    // }
+
+    // let i2=3
+    // do {
+    //   console.log(i2);
+    //   i2++
+    // } while (i2<10);
+
+    // let index=83;
+    // while (index < 115) {
+    //   if (index%7 === 0) {
+    //    console.log(index);  
+    //   }
+    //   index++
+    // }
+
+
+  </script>
+</body>
+</html>

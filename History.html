@@ -1,89 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript History</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    h1 {
+      color: #1e3a8a;
+      font-size: 28px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      border-left: 5px solid #1e3a8a;
+      padding-left: 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #0f172a;
+      margin: 20px 0 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-left: 20px;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    li::marker {
+      color: #6366f1;
+    }
+
+    body > p:first-of-type {
+      margin-top: 0;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <h1>1995 – The Birth of JavaScript</h1>
-Created by: Brendan Eich at Netscape.
+  <p>Created by: Brendan Eich at Netscape.</p>
+  <p>Initial Name: Mocha, then renamed to LiveScript, and finally to JavaScript (for marketing purposes, to ride the popularity of Java).</p>
+  <p>Development Time: 10 days.</p>
 
-<p>Initial Name: Mocha, then renamed to LiveScript, and finally to JavaScript (for marketing purposes, to ride the popularity of Java).</p>
+  <h2>🔸 Purpose: To make web pages interactive. At the time, HTML and CSS could only do static layout and styling.</h2>
 
-Development Time: 10 days.
+  <h2>🔹 1996 – JavaScript Becomes a Standard</h2>
+  <p>Microsoft launched its own version called JScript in Internet Explorer.</p>
+  <p>To avoid fragmentation, JavaScript was standardized by ECMA International.</p>
+  <p>The standard was called ECMAScript.</p>
+  <p>The first edition was released in 1997.</p>
 
-<h2>🔸 Purpose: To make web pages interactive. At the time, HTML and CSS could only do static layout and styling.</h2>
+  <h1>1997–2009 – ECMAScript Evolution</h1>
+  <p>ECMAScript 2 (1998) and 3 (1999) made minor improvements. Then came a long pause due to browser wars and lack of cooperation. During this time, JavaScript became infamous for being buggy or hard to manage.</p>
 
-<h2>🔹 1996 – JavaScript Becomes a Standard
-Microsoft launched its own version called JScript in Internet Explorer.</h2>
+  <h1>2009 – ECMAScript 5 (ES5)</h1>
+  <p>A major update. Introduced features like:</p>
+  <ul>
+    <li>strict mode</li>
+    <li>JSON</li>
+    <li>Array methods like forEach(), map(), filter()</li>
+    <li>Object.create()</li>
+  </ul>
+  <p>This version became the baseline for modern JavaScript.</p>
 
-<p>To avoid fragmentation, JavaScript was standardized by ECMA International.</p>
+  <h1>2015 – ECMAScript 6 (ES6 / ES2015)</h1>
+  <p>A revolutionary release that modernized JavaScript:</p>
+  <ul>
+    <li>let and const</li>
+    <li>Arrow functions: <code>() => { }</code></li>
+    <li>Classes and modules</li>
+    <li>Template literals: <code>`Hello, ${name}`</code></li>
+    <li>Destructuring, default parameters</li>
+    <li>Promises</li>
+    <li>Spread and rest operators</li>
+  </ul>
+  <p>ES6 made JavaScript suitable for large-scale application development.</p>
 
-<p>The standard was called ECMAScript.</p>
+  <h1>2016 to Present – Yearly Releases</h1>
+  <p>JavaScript now gets annual updates with smaller, focused changes:</p>
 
-<p>The first edition was released in 1997.</p>
+  <h1>ES7 (2016):</h1>
+  <p>Array.prototype.includes, Exponentiation operator (**)</p>
 
-<h1>1997–2009 – ECMAScript Evolution</h1>
-<p>ECMAScript 2 (1998) and 3 (1999) made minor improvements.
-Then came a long pause due to browser wars and lack of cooperation.
-During this time, JavaScript became infamous for being buggy or hard to manage.</p>
+  <h1>ES8 (2017):</h1>
+  <p>async/await, Object.entries(), Object.values()</p>
 
-<h1>2009 – ECMAScript 5 (ES5) </h1>
-<p>A major update.
-Introduced features like:</p>
-<li>strict mode</li>
-<li>JSON</li>
-<li>Array methods like forEach(), map(), filter()</li>
-<li>Object.create()</li>
-This version became the baseline for modern JavaScript.
+  <h1>ES9 (2018):</h1>
+  <p>Rest/spread for objects, async iteration</p>
 
-<h1>2015 – ECMAScript 6 (ES6 / ES2015)</h1>
-<p>A revolutionary release that modernized JavaScript:</p>
+  <h1>ES10+ (2019–2024):</h1>
+  <ul>
+    <li>Optional chaining <code>?.</code></li>
+    <li>Nullish coalescing <code>??</code></li>
+    <li>BigInt</li>
+    <li>Array.at()</li>
+    <li>Top-level await</li>
+    <li>Pattern matching (proposal) and more.</li>
+  </ul>
 
-<li>let and const</li>
+  <h1>JavaScript Today</h1>
+  <p>Runs on browsers, servers (Node.js), mobile apps, desktop apps, IoT devices, etc.</p>
+  <p>Powers major frameworks like React, Vue, Angular, and runtimes like Node.js, Deno.</p>
+  <p>Integral to frontend, and increasingly, backend and full-stack development.</p>
 
-<li>Arrow functions: () => { }</li>
-
-<li>Classes and modules</li>
-
-<li>Template literals: `Hello, ${name}`</li>
-
-<li>Destructuring, default parameters</li>
-
-<li>Promises</li>
-
-<li>Spread and rest operators</li>
-
-<p>ES6 made JavaScript suitable for large-scale application development.</p>
-
-<h1>2016 to Present – Yearly Releases</h1>
-<p>JavaScript now gets annual updates with smaller, focused changes:</p>
-
-<h1>ES7 (2016):</h1> <p>Array.prototype.includes, Exponentiation operator (**)</p>
-
-<h1>ES8 (2017):</h1> <p>async/await, Object.entries(), Object.values()</p>
-
-<h1>ES9 (2018):</h1> <p>Rest/spread for objects, async iteration</p>
-
-<h1>ES10+ (2019–2024):</h1> <li>Optional chaining ?.,</li><li>nullish coalescing ??</li><li> BigInt</li> <li>Array.at()</li> <li>top-level await</li> <li> pattern matching (proposal) and more.</li>
-
-<h1>JavaScript Today</h1>
-<p>Runs on browsers, servers (Node.js), mobile apps, desktop apps, IoT devices, etc.</p>
-
-<p>Powers major frameworks like React, Vue, Angular, and runtimes like Node.js, Deno.</p>
-
-<p>Integral to frontend, and increasingly, backend and full-stack development.</p>
-
-<h1>Compare VAR, LET , CONST</h1>
-<p>var is function scoped</p>
-
- <li> let and const are block scoped</li>
- <p>var is hoisted and initialized with undefined</p>
-
-  <li>let and const are hoisted but remain in temporal dead zone until declaration</li>
-
-  <p>const means you cannot reassign the variable itself, but you can mutate the object/array it points to.</p>
+  <h1>Compare VAR, LET, CONST</h1>
+  <p><strong>var</strong> is function scoped</p>
+  <ul>
+    <li><strong>let</strong> and <strong>const</strong> are block scoped</li>
+  </ul>
+  <p><strong>var</strong> is hoisted and initialized with <code>undefined</code></p>
+  <ul>
+    <li><strong>let</strong> and <strong>const</strong> are hoisted but remain in temporal dead zone until declaration</li>
+  </ul>
+  <p><strong>const</strong> means you cannot reassign the variable itself, but you can mutate the object/array it points to.</p>
 
 </body>
 </html>
