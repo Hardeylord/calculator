@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
+    /* body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f4f4f4;
       padding: 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
+    } */
 
     .container {
       background-color: #fff;
@@ -75,6 +76,31 @@
   </style>
 </head>
 <body>
+  <nav>
+    <div class="logo"><a href="#">My projects</a></div>
+  
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  
+    <ul class="links" id="nav-links">
+      <li><a href="index.html">Calculators</a></li>
+      <li><a href="#">Loops</a></li>
+      <li><a href="guessGame.html">Guess</a></li>
+      <li><a href="History.html">Documentation</a></li>
+      <li><a href="subjectSelection.html">Subject</a></li>
+      <li><a href="hotelBooking.html">Hotel</a></li>
+      <li><a href="form-validation.html">Form Validation</a></li>
+      <li><a href="project-1.html">Uber</a></li>
+      <li><a href="loopPm.html">primeNumber</a></li>
+      <li><a href="aboutMe.html">About Me</a></li>
+    </ul>
+  
+    <a href="aboutMe.html" class="action-btn">Get Started</a>
+  </nav>
+
 
   <div class="container">
     <h1>Prime Number Checker</h1>
@@ -148,7 +174,10 @@
     //   index++
     // }
 
-
+    function toggleMenu() {
+      const links = document.getElementById("nav-links");
+      links.classList.toggle("active");
+    }
   </script>
 </body>
 </html>

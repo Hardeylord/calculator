@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Read More Card</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* body {
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    } */
+
+    .card {
+      background-color: black;
+      color: white;
+      width: 250px;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 20px;
+      padding: 20px;
+      position: relative;
+      /* transition: height 0.4s ease; */
+    }
+
+    .card.active {
+      height: 530px;
+    }
+
+    .readMore {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: red;
+      width: 100px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .readMore p {
+      color: white;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .card p {
+      font-size: 14px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+
+  <nav>
+    <div class="logo"><a href="#">My projects</a></div>
+  
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  
+    <ul class="links" id="nav-links">
+      <li><a href="index.html">Calculators</a></li>
+      <li><a href="#">Loops</a></li>
+      <li><a href="guessGame.html">Guess</a></li>
+      <li><a href="History.html">Documentation</a></li>
+      <li><a href="subjectSelection.html">Subject</a></li>
+      <li><a href="hotelBooking.html">Hotel</a></li>
+      <li><a href="form-validation.html">Form Validation</a></li>
+      <li><a href="project-1.html">Uber</a></li>
+      <li><a href="loopPm.html">primeNumber</a></li>
+      <li><a href="aboutMe.html">About Me</a></li>
+    </ul>
+  
+    <a href="aboutMe.html" class="action-btn">Get Started</a>
+  </nav>
+
+  <div class="card" id="card">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae aspernatur magnam.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus sapiente ipsum Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam doloremque, vel distinctio soluta amet nostrum numquam earum vitae quasi animi eum sit quae ratione, tempore doloribus ex sapiente non molestias.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident perspiciatis harum veritatis.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit voluptatem autem saepe inventore illum beatae tenetur, itaque sit repudiandae doloremque culpa ad, ab, sunt dolores perspiciatis nesciunt quas iste est?
+    </p>
+    
+    <div class="readMore" onclick="toggleCard()">
+      <p id="btnText">Read More</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleCard() {
+      const card = document.getElementById("card");
+      const btnText = document.getElementById("btnText");
+      card.classList.toggle("active");
+
+      if (card.classList.contains("active")) {
+        btnText.textContent = "Read Less";
+      } else {
+        btnText.textContent = "Read More";
+      }
+    }
+
+    function toggleMenu() {
+      const links = document.getElementById("nav-links");
+      links.classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>

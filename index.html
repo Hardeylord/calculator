@@ -8,37 +8,33 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="navbar">
-      <div class="logo"><a href="#">My projects</a></div>
-      <ul class="links">
-        <li><a href="index.html">Calculators</a></li>
-        <li><a href="http://">Loops</a></li>
-        <li><a href="guessGame.html">Guess</a></li>
-        <li><a href="History.html">Documentation</a></li>
-        <li><a href="subjectSelection.html">Subject</a></li>
-        <li><a href="hotelBooking.html">Hotel</a></li>
-        <li><a href="form-validation.html">Form Validation</a></li>
-        <li><a href="project-1.html">Uber</a></li>
-        <li><a href="loopPm.html">primeNumber</a></li>
-      </ul>
-      <a href="http://" class="action-btn">Get Started</a>
-      <div class="toggle-btn">
-        <i class="fa-solid fa-bars-staggered"></i>
-      </div>
-    </div>
-    <div class="dropdown-menu">
-      <li><a href="index.html">Calculators</a></li>
-      <li><a href="http://">Loops</a></li>
-      <li><a href="guessGame.html">Guess</a></li>
-      <li><a href="History.html">Documentation</a></li>
-      <li><a href="subjectSelection.html">Subject</a></li>
-      <li><a href="hotelBooking.html">Hotel</a></li>
-      <li><a href="form-validation.html">Form Validation</a></li>
-      <li><a href="project-1.html">Uber</a></li>
-    </div>
-  </header>
+</head>
+<body>
 
+<nav>
+  <div class="logo"><a href="#">My projects</a></div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul class="links" id="nav-links">
+    <li><a href="index.html">Calculators</a></li>
+    <li><a href="#">Loops</a></li>
+    <li><a href="guessGame.html">Guess</a></li>
+    <li><a href="History.html">Documentation</a></li>
+    <li><a href="subjectSelection.html">Subject</a></li>
+    <li><a href="hotelBooking.html">Hotel</a></li>
+    <li><a href="form-validation.html">Form Validation</a></li>
+    <li><a href="project-1.html">Uber</a></li>
+    <li><a href="loopPm.html">primeNumber</a></li>
+    <li><a href="aboutMe.html">About Me</a></li>
+  </ul>
+
+  <a href="aboutMe.html" class="action-btn">Get Started</a>
+</nav>
 
 
 
@@ -114,6 +110,8 @@
     <br>
     <button onclick="rtYear()">Calculate</button>
   </div>
+
+  
 </div>
   <script>
     //loan
@@ -295,7 +293,12 @@
             
         } 
     }
+    function toggleMenu() {
+      const links = document.getElementById("nav-links");
+      links.classList.toggle("active");
+    }
 
+    
   </script>
 </body>
 </html>
