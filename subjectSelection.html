@@ -66,7 +66,6 @@
     const ticked = document.querySelector('.ticked');
     const subjectsContainer = document.querySelector('.subjects');
 
-    // Function to handle the change event for a checkbox
     function handleCheckboxChange(e) {
       if (e.target.checked) {
         const parent = e.target.parentElement;
@@ -78,10 +77,10 @@
     }
 
     function addListeners() {
-      const boxes = document.querySelectorAll('.check:not([data-listener-attached])'); // Select only checkboxes without the data attribute
+      const boxes = document.querySelectorAll('.check:not([data-listener-attached])');
       boxes.forEach(box => {
         box.addEventListener('change', handleCheckboxChange);
-        box.setAttribute('data-listener-attached', 'true'); // Mark as listener attached
+        box.setAttribute('data-listener-attached', 'true');
       });
     }
 
@@ -104,14 +103,13 @@
 
     function moveBack(subject, elementToRemove) {
       const label = document.createElement('label');
-      // When re-adding, ensure the checkbox is unchecked and has no listener attached marker
       label.innerHTML = `<input class="check" type="checkbox"><span>${subject}</span>`;
       subjectsContainer.appendChild(label);
       ticked.removeChild(elementToRemove);
-      addListeners(); // Reattach listeners to new and unattached checkboxes
+      addListeners(); 
     }
 
-    addListeners(); // Initial call to set up listeners
+    addListeners(); 
     function toggleMenu() {
       const links = document.getElementById("nav-links");
       links.classList.toggle("active");
