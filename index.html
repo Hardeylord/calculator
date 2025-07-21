@@ -22,7 +22,6 @@
 
   <ul class="links" id="nav-links">
     <li><a href="index.html">Calculators</a></li>
-    <li><a href="#">Loops</a></li>
     <li><a href="guessGame.html">Guess</a></li>
     <li><a href="History.html">Documentation</a></li>
     <li><a href="subjectSelection.html">Subject</a></li>
@@ -53,9 +52,12 @@
     <option value="7">7 years</option>
     <option value="8">8 years</option>
   </select>
-  <br><br>
   <p>Loan Interest: 15%</p>
-  <button onclick="LOAN()">Calculate</button>
+  <br><br>
+ <div style="display: flex; justify-content: center;">
+  <button style="width: 100px; padding: 10px; border-radius: 5px;" onclick="LOAN()">Calculate</button>
+ </div>
+  
   <p class="answer"></p>
   <p class="loanError"></p>
 </div>
@@ -73,10 +75,13 @@
     <p class="solution"></p>
     <p class="calcError"></p>
     <br>
-    <button class="btn" onclick="addOperation()">+</button>
-    <button class="btn" onclick="minusOperation()">-</button>
-    <button class="btn" onclick="multiplyOperation()">*</button>
-    <button class="btn" onclick="divisionOperation()">/</button>
+    <div style="display: flex; justify-content: center;">
+      <button class="btn" onclick="addOperation()">+</button>
+      <button class="btn" onclick="minusOperation()">-</button>
+      <button class="btn" onclick="multiplyOperation()">*</button>
+      <button class="btn" onclick="divisionOperation()">/</button>
+    </div>
+    
     </div>
     <!--Investment-->
     <div class="investS">
@@ -92,9 +97,11 @@
     <option value="5">5 year</option>
     <option value="6">6 year</option>
   </select>
-  <br><br>
   <h4>ROI is 15%</h4>
-  <button onclick="investment()">Calculate ROI</button>
+  <br><br>
+  <div style="display: flex; justify-content: center;">
+    <button style="width: 120px; padding: 10px; border-radius: 5px; background-color: aqua;" onclick="investment()">Calculate ROI</button>
+   </div>
   <br>
   <p class="paragraph"></p>
   <p class="investmentError"></p>
@@ -108,7 +115,9 @@
     <div class="when"></div>
     <p class="rtYeartError"></p>
     <br>
-    <button onclick="rtYear()">Calculate</button>
+    <div style="display: flex; justify-content: center;">
+      <button style="width: 120px; padding: 10px; border-radius: 5px; background-color: rebeccapurple; color: white;" onclick="rtYear()">Calculate</button>
+     </div>
   </div>
 
   
@@ -163,7 +172,7 @@
       const inputValue2=Number(v2);
       const adittion = inputValue1 + inputValue2;
       calcSymbol.innerHTML='+';
-      document.querySelector('.solution').innerHTML=`Answer is ${adittion} `
+      document.querySelector('.solution').innerHTML=`= ${adittion} `
       calcError.innerHTML=""
   }
     }
@@ -183,7 +192,7 @@
       const inputValue1=Number(v1);
       const inputValue2=Number(v2);
       const subtraction = inputValue1 - inputValue2;
-      document.querySelector('.solution').innerHTML=`Answer is ${subtraction} `
+      document.querySelector('.solution').innerHTML=`= ${subtraction} `
           calcError.innerHTML=""
   }
 
@@ -204,7 +213,7 @@
       const inputValue1=Number(v1);
       const inputValue2=Number(v2);
       const multiplyOperation = inputValue1 * inputValue2;
-      document.querySelector('.solution').innerHTML=`Answer is ${multiplyOperation} `
+      document.querySelector('.solution').innerHTML=`= ${multiplyOperation} `
           calcError.innerHTML=""
   }
     }
@@ -224,7 +233,7 @@
       const inputValue1=Number(v1);
       const inputValue2=Number(v2);
       const divisionOperation = inputValue1 / inputValue2;
-      document.querySelector('.solution').innerHTML=`Answer is ${divisionOperation} `
+      document.querySelector('.solution').innerHTML=`= ${divisionOperation} `
           calcError.innerHTML=""
   }
     }

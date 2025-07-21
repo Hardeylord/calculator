@@ -33,17 +33,24 @@
   </nav>
 
 
-  <h1>
-    guess my number game
-  </h1>
-  <h2>Start Guessing....</h2>
-  <input type="text" class="enteredValue">
-  <button class="check">Check</button>
-  <button style="display: none;" class="play-again">Play again</button>
-  <p class="EnteredValueRemark"></p>
-  <p class="generatedNumber"></p>
-  <h3 class="write-score"></h3>
-  <h5 class="write-Hscore">Highest Score:</h5>
+  <div class="game-container">
+    <h1>Guess My Number</h1>
+    <p class="hint">The number is between <strong>100</strong> and <strong>130</strong></p>
+    <h2>Start guessing...</h2>
+  
+    <input type="text" class="enteredValue" placeholder="Enter a number" />
+    <button class="check">Check</button>
+    <button class="play-again" style="display: none;">Play Again</button>
+  
+    <p class="EnteredValueRemark"></p>
+    <p class="generatedNumber"></p>
+  
+    <div class="scores">
+      <h3 class="write-score"></h3>
+      <h5 class="write-Hscore"></h5>
+    </div>
+  </div>
+  
 
   <script>
     //getting entered value

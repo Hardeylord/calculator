@@ -251,13 +251,13 @@
       // showTimefare.innerHTML=Number(minuts*60)+ Number(seconds);
       const baseFare=2000;
       //time fare which converts time to seconds and multiplies by #100
-      const timeFare=(Number(minuts*60)+ Number(seconds))*100
+      const timeFare = Math.floor((Number(minuts) + Number(seconds) / 60) * 100);
       showTimefare.innerHTML=`Time fare:₦${timeFare}`
 
       const IT=baseFare+timeFare
       showInitialtotal.innerHTML=`Initial Total:${IT}`
 
-      const Tax=(10/100)*IT
+      const Tax=Math.floor((10/100)*IT)
       showTax.innerHTML=`Tax(10%):${Tax}`
 
       const total=Tax+IT

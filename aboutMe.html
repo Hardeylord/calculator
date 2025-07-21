@@ -16,25 +16,26 @@
     } */
 
     .card {
+      display: none;
       background-color: black;
       color: white;
-      width: 250px;
+      width: 550px;
       height: 250px;
       overflow: hidden;
       border-radius: 20px;
       padding: 20px;
       position: relative;
-      /* transition: height 0.4s ease; */
+       transition: height 0.4s ease;
     }
 
     .card.active {
-      height: 530px;
+      margin-top: 10px;
+      height: fit-content;
+      display: block;
+      transition: height 0.4s ease;
     }
 
     .readMore {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
       background-color: red;
       width: 100px;
       height: 30px;
@@ -85,19 +86,62 @@
   
     <a href="aboutMe.html" class="action-btn">Get Started</a>
   </nav>
-
-  <div class="card" id="card">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae aspernatur magnam.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus sapiente ipsum Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam doloremque, vel distinctio soluta amet nostrum numquam earum vitae quasi animi eum sit quae ratione, tempore doloribus ex sapiente non molestias.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident perspiciatis harum veritatis.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit voluptatem autem saepe inventore illum beatae tenetur, itaque sit repudiandae doloremque culpa ad, ab, sunt dolores perspiciatis nesciunt quas iste est?
-    </p>
+<div style="width: 100%; display: flex; flex-direction: column; justify-content: center;margin-top: 20px; align-items: center;">
+   <div style="text-align: center; display: flex;flex-direction: column; justify-content: center;align-items: center; width: 500px;">
+    My name is ADEAGBO ADEDIPUPO, I am 20,
+      currently anInternship at ValueMax Coder's Hub.
+      I enjoy watching  football, playing football,
+      and have a peculiar liking for All kind of food.
+      I am from oyo state, and I dream of becoming
+      a FULL-STACK DEVELOPER.`;
     
     <div class="readMore" onclick="toggleCard()">
       <p id="btnText">Read More</p>
     </div>
+   </div>
+  <div class="card" id="card">
+    <p>
+      const person = {
+        <br>
+        name: 'ADEAGBO ADEDIPUPO',
+        <br>
+        dateOfBirth: '2005',
+        <br>
+        age: 20,
+        <br>
+        status: 'Internship',
+        <br>
+        hobby: 'football',
+        <br>
+        zodiac: 'cancer',
+        <br>
+        favorite_sport: 'football',
+        <br>
+        favorite_food: 'All',
+        <br>
+        state_of_origin: 'OYO STATE',
+        <br>
+        dream_occupation: 'FULL-STACK DEVELOPER',
+        <br>
+        complexion: 'DARK'
+        <br>
+      };
+      <br>
+      
+      const output = document.getElementById("output");
+      output.textContent = `My name is ${person.name}, I am ${person.age},
+      currently a ${person.status} at ValueMax Coder's Hub.
+      I enjoy listening to ${person.hobby}, playing ${person.favorite_sport},
+      and have a peculiar liking for ${person.favorite_food}.
+      I am from ${person.state_of_origin}, and I dream of becoming
+      a ${person.dream_occupation}.`;
+    </p>
+    
+    <!-- <div class="readMore" onclick="toggleCard()">
+      <p id="btnText">Read More</p>
+    </div> -->
   </div>
-
+</div>
   <script>
     function toggleCard() {
       const card = document.getElementById("card");
